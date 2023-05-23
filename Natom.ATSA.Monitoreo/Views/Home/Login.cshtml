@@ -1,0 +1,76 @@
+﻿@model Natom.ATSA.Monitoreo.Models.ViewModels.LoginView
+@{
+    ViewBag.Title = "Identificarse";
+}
+
+<link href="~/Resources/css/home/login.min.css" rel="stylesheet" />
+
+@using (Html.BeginForm("Login", "Home", FormMethod.Post))
+{
+<div class="container">
+    <div class="card card-container">
+        @*<img id="profile-img" class="profile-img-card" src="/liquidacionestest/Resources/img/logo.png" />*@
+        <img id="profile-img" class="profile-img-card" src="~/Resources/img/logo.png" />
+        <p id="profile-name" class="profile-name-card"></p>
+        <form class="form-signin">
+            <span id="reauth-email" class="reauth-email"></span>
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email", @required = "required", @autofocus = "autofocus" })
+            @Html.PasswordFor(m => m.Clave, new { @class = "form-control", @placeholder = "Clave", @required = "required" })
+
+            <center><i style="color:red;">@ViewBag.ErrorMessage</i></center>
+            <br />
+            <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Ingresar</button>
+        </form><!-- /form -->
+        <a href="javascript:RecuperarClave()" class="forgot-password">
+            ¿Olvidó la clave?
+        </a><br />
+        <a href="http://www.atsahurlingham.com.ar/soporte">
+            Soporte
+        </a><br />
+        <a href="http://www.atsahurlingham.com.ar/solicitaracceso">
+            Solicitar acceso
+        </a><br />
+    </div><!-- /card-container -->
+</div><!-- /container -->
+}
+
+<script type="text/javascript">
+    function validateEmail(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@@"]+(\.[^<>()\[\]\\.,;:\s@@"]+)*)|(".+"))@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    }
+
+    function RecuperarClave() {
+        if (!validateEmail($("#Email").val())) {
+            Mensajes.MostrarError("El Email ingresado no es correcto.");
+            return;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: '/monitoreotest/usuarios/EnviarMailRecupero',
+            data: JSON.stringify({
+                email: $("#Email").val()
+            }),
+            dataType: "json",
+            contentType: "application/json",
+            beforeSend: function (xhr) {
+                $.blockUI({ message: '<h4>Procesando...</h4>' });
+            },
+            success: function (data, status) {
+                if (status == "success") {
+                    if (data.success) {
+                        Mensajes.MostrarOK("Se ha enviado un Email a la casilla '" + $("#Email").val() + "' para recuperar la clave. Revise su correo para continuar con el proceso de recupero de clave.");
+                    }
+                    else {
+                        Mensajes.MostrarError(data.error);
+                    }
+                }
+                else {
+                    Mensajes.MostrarError("Se ha producido un error. Comuníquese con el administrador de ATSA.");
+                }
+                $.unblockUI();
+            }
+        });
+    }
+</script>

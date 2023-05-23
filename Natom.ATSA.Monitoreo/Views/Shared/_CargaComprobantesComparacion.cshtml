@@ -1,0 +1,56 @@
+﻿<script type="text/javascript">
+    function CargarArchivoComparacionComprobantes() {
+        $("#modalCargaComprobantesComparacion").modal("show");
+    }
+</script>
+<div id="modalCargaComprobantesComparacion" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" style="color:black!important">Cargar archivo para comparación de comprobantes de interfilial</h4>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("UploadComparacionComprobantes", "Cargas", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div style="border:1px solid #ccc;border-radius:4px;padding:2px;">
+                        <input type="file" accept=".txt" name="filesComprobantes" id="filesComprobantes" />
+                        <input type="submit" id="btnSubmitCargaComprobantesComparacion" style="display:none" />
+                    </div>
+                    <span id="ErrorCargaComprobantesComparacion" style="color:red;display:none;">Debes seleccionar el archivo .txt de comprobantes.</span>
+                    
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float:left;">Cancelar</button>
+                <button type="button" class="btn btn-success" id="btnCargaComprobantesComparacion" style="float:right;">Comparar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#btnCargaComprobantesComparacion").on('click', function () {
+            var error = false;
+
+            if ($("#filesComprobantes").val() == "") {
+                $("#ErrorCargaComprobantesComparacion").show();
+                error = true;
+            } else {
+                $("#ErrorCargaComprobantesComparacion").hide();
+            }
+
+            if (!error) {
+                MostrarCargando();
+                $('#btnSubmitCargaComprobantesComparacion').click();
+                //OcultarCargando();
+            }
+
+        });
+    });
+</script>

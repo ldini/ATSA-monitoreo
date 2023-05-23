@@ -1,0 +1,68 @@
+﻿@using Natom.ATSA.Monitoreo.Models
+@model ComprobanteRecibidoPeriodo
+    <tr index="0">
+        <td><input type="hidden" class="comprobanterecibidoid" value="0" /></td>
+        <td class="tdFechaRecibido"><input type="text" placeholder="dd/mm/aaaa" class="form-control fecharecibido" value="@DateTime.Now.ToString("dd/MM/yyyy")" /></td>
+        <td class="tdPrestador">
+            <input type="hidden" class="prestadorid" value="0" />
+            <input type="text" placeholder="Ingresa al menos tres letras..." class="form-control prestador" />
+        </td>
+        <td class="tdPrestadorCUIT"><input type="text" class="form-control cuit" /></td>
+        <td class="tdTipoComprobante">
+            <select class="tipocomprobanteid" size="1">
+                <option value="0">-----
+                <option>
+                    @foreach (var t in ViewBag.TiposComprobantes as List<TipoComprobante>)
+                    {
+                    <option value="@t.TipoComprobanteId">@t.Codigo</option>
+                }
+                </select>
+            </td>
+            <td class="tdPuntoDeVenta"><input type="text" class="form-control puntodeventa" style="text-align:right" /></td>
+            <td class="tdNumero"><input type="text" class="form-control numero" style="text-align:right" /></td>
+            <td class="tdFecha"><input type="text" placeholder="dd/mm/aaaa" class="form-control fecha" /></td>
+            <td class="tdNInterno"><input type="text" class="form-control ninterno" style="text-align:right" /></td>
+            <td class="tdMesPeriodo">
+                <select class="mesperiodo" size="1">
+                    <option value="0">--</option>
+                    @for (int mmes = 1; mmes <= 12; mmes++)
+                    {
+                        <option value="@mmes" @(Model.Mes == mmes ? "selected" : "")>@mmes</option>
+                    }
+                </select>
+            </td>
+            <td class="tdAnioPeriodo">
+                <select class="anioperiodo" size="1">
+                    <option value="0">----</option>
+                    @for (int aanio = 2019; aanio <= DateTime.Now.Year + 1; aanio++)
+                    {
+                        <option value="@aanio" @(Model.Anio == aanio ? "selected" : "")>@aanio</option>
+                    }
+                </select>
+            </td>
+            <td class="tdRefact"><center><input type="checkbox" class="refact" value="True" /></center></td>
+            <td class="tdMonto"><input type="text" class="form-control monto moneda" /></td>
+            <td class="tdDebito"><input type="text" class="form-control debito moneda" /></td>
+            <td class="tdAPagar"><input type="text" readonly class="form-control apagar moneda" /></td>
+            <td class="tdTipoSoporte"><center><input type="checkbox" class="tiposoportemag" value="True" /></center></td>
+            <td class="tdAmbul"><center><input type="checkbox" class="ambul" value="True" /></center></td>
+            <td class="tdInt"><center><input type="checkbox" class="int" value="True" /></center></td>
+            <td class="tdMontoInt"><center><input type="text" class="form-control montoint moneda" /></center></td>
+            <td class="tdTipo"><select class="tipo" size="1"><option value="B">RBO-B</option><option value="C">RBO-C</option></select></td>
+            <td class="tdObservaciones"><input type="text" class="form-control observaciones" /></td>
+            <td class="tdConsiliado"><center><input type="checkbox" class="consiliado" /></center></td>
+            <td class="tdLiquidado"><center><input type="checkbox" class="liquidado" value="True" /></center></td>
+            <td class="tdLiquidadoUsuario"><input type="text" class="form-control liquidadopor" /></td>
+            <td class="tdBabich"><center><input type="checkbox" auditor="babich" class="babich checkAuditor" /></center></td>
+            <td class="tdGT"><center><input type="checkbox" auditor="gt" class="gt checkAuditor" /></center></td>
+            <td class="tdMT"><center><input type="checkbox" auditor="mt" class="mt checkAuditor" /></center></td>
+            <td class="tdFechaInformada"><input type="text" class="form-control fechainformada" /></td>
+            <td class="tdAuditado"><center><input type="checkbox" class="auditado" /></center></td>
+            <td class="tdPMIF"><center><input type="checkbox" class="pmif" @((bool)ViewBag.PuedeEditarPMIF == true ? "" : "disabled") /></center></td>
+            <td class="tdBotonera">
+                @if ((bool)ViewBag.PuedeAnularEnPeriodo == true)
+                {
+                    <div class="btn btn-danger btn-sm btn-eliminar">X</div>
+                }
+            </td>
+        </tr>

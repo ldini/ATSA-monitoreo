@@ -1,0 +1,366 @@
+﻿@using Natom.ATSA.Monitoreo.Models
+@model ComprobanteRecibidoPeriodo
+
+@{
+    ViewBag.Title = "Editar";
+}
+
+@Html.HiddenFor(m => m.ComprobanteRecibidoPeriodoId)
+@Html.Hidden("SoloLectura")
+@Html.Hidden("PuedeAuditar")
+@Html.Hidden("CurrentUser", ((Usuario)ViewBag.Usuario).Nombre)
+
+<style type="text/css">
+    #tbl .chosen-container-single .chosen-single, #tbl .chosen-container-single .chosen-default {
+        height: 29px !important;
+    }
+
+        #tbl .chosen-container-single .chosen-single span,
+        #tbl .chosen-default span {
+            margin: -3px 26px 0px 2px;
+        }
+
+        #tbl .chosen-container-single .chosen-single div b,
+        #tbl .chosen-default b {
+            margin-top: -3px;
+        }
+
+    #tbl .form-control {
+        width: 100%;
+        padding: 4px;
+        height: 30px;
+        border-radius: 0px;
+    }
+
+    #tbl tr td {
+        padding: 0px;
+        height: 30px;
+    }
+
+    .tdFechaRecibido {
+        width: 100px !important;
+        min-width: 100px !important;
+        max-width: 100px !important;
+    }
+
+    .tdPrestador {
+        width: 270px !important;
+        min-width: 270px !important;
+        max-width: 270px !important;
+    }
+
+    .tdPrestadorCUIT {
+        width: 120px !important;
+        min-width: 120px !important;
+        max-width: 120px !important;
+    }
+
+    .tdTipoComprobante {
+        width: 100px !important;
+        min-width: 100px !important;
+        max-width: 100px !important;
+    }
+
+    .tdFecha {
+        width: 100px !important;
+        min-width: 100px !important;
+        max-width: 100px !important;
+    }
+
+    .tdPuntoDeVenta {
+        width: 50px !important;
+        min-width: 50px !important;
+        max-width: 50px !important;
+        display: none;
+    }
+
+    .tdNumero {
+        width: 90px !important;
+        /*min-width: 90px !important;
+        max-width: 90px !important;*/
+        min-width: 150px !important;
+        max-width: 150px !important;
+    }
+
+    .tdNInterno {
+        width: 80px !important;
+        min-width: 80px !important;
+        max-width: 80px !important;
+    }
+
+    .tdMesPeriodo {
+        width: 60px !important;
+        min-width: 60px !important;
+        max-width: 60px !important;
+    }
+
+    .tdAnioPeriodo {
+        width: 70px !important;
+        min-width: 70px !important;
+        max-width: 70px !important;
+    }
+
+    .tdRefact {
+        width: 60px !important;
+        min-width: 60px !important;
+        max-width: 60px !important;
+    }
+
+    .tdMonto {
+        width: 100px !important;
+        min-width: 100px !important;
+        max-width: 100px !important;
+    }
+
+    .tdDebito {
+        width: 100px !important;
+        min-width: 100px !important;
+        max-width: 100px !important;
+    }
+
+    .tdAPagar {
+        width: 100px !important;
+        min-width: 100px !important;
+        max-width: 100px !important;
+    }
+
+    .tdTipoSoporte {
+        width: 80px !important;
+        min-width: 80px !important;
+        max-width: 80px !important;
+    }
+
+    .tdAmbul {
+        width: 50px !important;
+        min-width: 50px !important;
+        max-width: 50px !important;
+    }
+
+    .tdMontoInt {
+        width: 120px !important;
+        min-width: 120px !important;
+        max-width: 120px !important;
+        display: none;
+    }
+
+    .tdTipo {
+        width: 120px !important;
+        min-width: 120px !important;
+        max-width: 120px !important;
+        display: none;
+    }
+
+    .tdInt {
+        width: 45px !important;
+        min-width: 45px !important;
+        max-width: 45px !important;
+    }
+
+    .tdObservaciones {
+        width: 200px !important;
+        min-width: 200px !important;
+        max-width: 200px !important;
+    }
+
+    .tdConsiliado {
+        width: 90px !important;
+        min-width: 90px !important;
+        max-width: 90px !important;
+    }
+
+    .tdLiquidado {
+        width: 70px !important;
+        min-width: 70px !important;
+        max-width: 70px !important;
+    }
+
+    .tdLiquidadoUsuario {
+        width: 100px !important;
+        min-width: 100px !important;
+        max-width: 100px !important;
+    }
+
+    .tdBabich {
+        width: 60px !important;
+        min-width: 60px !important;
+        max-width: 60px !important;
+    }
+
+    .tdGT {
+        width: 40px !important;
+        min-width: 40px !important;
+        max-width: 40px !important;
+    }
+
+    .tdMT {
+        width: 40px !important;
+        min-width: 40px !important;
+        max-width: 40px !important;
+    }
+
+    .tdBotonera {
+        width: 100px !important;
+        min-width: 100px !important;
+        max-width: 100px !important;
+    }
+
+    .tdFechaInformada {
+        width: 100px !important;
+        min-width: 100px !important;
+        max-width: 100px !important;
+    }
+
+    .tdAuditado {
+        width: 100px !important;
+        min-width: 100px !important;
+        max-width: 100px !important;
+    }
+
+    .tdPMIF {
+        width: 70px !important;
+        min-width: 70px !important;
+        max-width: 70px !important;
+    }
+
+    input.error {
+        background-color: #edadad;
+    }
+
+    tr[disabled],
+    tr[disabled] input {
+        background-color: #efdede;
+    }
+
+        tr[disabled] .btn-eliminar {
+            display: none;
+        }
+</style>
+
+
+<link href="~/Resources/components/bootstrap-datepicker-3/bootstrap-datetimepicker.css" rel="stylesheet" />
+<script src="~/Resources/components/bootstrap-datepicker-3/moment.js"></script>
+<script src="~/Resources/components/bootstrap-datepicker-3/bootstrap-datetimepicker.js"></script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(m => m.ComprobanteRecibidoPeriodoId)
+
+    <div class="form-horizontal">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>@(ViewBag.SoloLectura == true ? "Visualizar" : "Editar")</h2>
+                <h4>Periodo @Model.Mes.ToString().PadLeft(2, '0')/@Model.Anio</h4>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12" style="max-height:400px; overflow-x:scroll; overflow-y:scroll;">
+                <table id="tbl" class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th><!--Comprobante id--></th>
+                            <th class="tdFechaRecibido">Recibido</th>
+                            <th class="tdPrestador">Prestador</th>
+                            <th class="tdPrestadorCUIT">CUIT</th>
+                            <th class="tdTipoComprobante">Tipo</th>
+                            <th class="tdPuntoDeVenta">P.V.</th>
+                            <th class="tdNumero">Número</th>
+                            <th class="tdFecha">Fecha</th>
+                            <th class="tdNInterno">N° Interno</th>
+                            <th class="tdMesPeriodo">Mes</th>
+                            <th class="tdAnioPeriodo">Año</th>
+                            <th class="tdRefact">Refact</th>
+                            <th class="tdMonto">($) Monto</th>
+                            <th class="tdDebito">($) Debito</th>
+                            <th class="tdAPagar">($) A Pagar</th>
+                            <th class="tdTipoSoporte">Tipo Soporte</th>
+                            <th class="tdAmbul">Ambul</th>
+                            <th class="tdInt"><center>Int</center></th>
+                            <th class="tdMontoInt"><center>Monto Int</center></th>
+                            <th class="tdTipo"><center>Tipo</center></th>
+                            <th class="tdObservaciones">Observaciones</th>
+                            <th class="tdConsiliado">Consiliado</th>
+                            <th class="tdLiquidado">Liquidado</th>
+                            <th class="tdLiquidadoUsuario"><center>Por</center></th>
+                            <th class="tdBabich">Babich</th>
+                            <th class="tdGT">GT</th>
+                            <th class="tdMT">MT</th>
+                            <th class="tdFechaInformada">Fecha informa</th>
+                            <th class="tdAuditado">Auditado</th>
+                            <th class="tdPMIF">PMIF</th>
+                            <th class="tdBotonera"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @Html.Partial("~/Views/comprobanterecibidoperiodo/_RowEditar.cshtml", Model)
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <center>
+                    <input type="button" class="btn btn-danger" value="Cancelar" onclick="Cancelar()" />
+                    &nbsp;
+                    <input type="button" value="Guardar" class="btn btn-success" id="btnGrabarCRP" onclick="Grabar()" />
+                </center>
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+    var comprobantes = @Html.Raw((new System.Web.Script.Serialization.JavaScriptSerializer()).Serialize(
+                            from c in Model.ComprobantesRecibidos.OrderBy(r => r.Prestador.RazonSocial)
+                            select new object[]
+                            {
+                                c.ComprobanteRecibidoId,
+                                c.FechaRecibido.ToString("dd/MM/yyyy"),
+                                c.Prestador.RazonSocial,
+                                c.Prestador.CUIT,
+                                c.PrestadorId,
+                                c.TipoComprobanteId,
+                                c.PuntoDeVenta,
+                                c.Numero,
+                                c.Fecha.ToString("dd/MM/yyyy"),
+                                c.NInterno,
+                                c.MesPeriodo,
+                                c.AnioPeriodo,
+                                c.Refact,
+                                c.Monto,
+                                c.Debito,
+                                c.APagar,
+                                c.TipoSoporteMag,
+                                c.Ambul,
+                                c.Int,
+                                c.MontoInt,
+                                c.Tipo,
+                                c.Observaciones,
+                                c.Consiliado,
+                                c.Liquidado,
+                                c.LiquidadoPor,
+                                c.Babich,
+                                c.GT,
+                                c.MT,
+                                c.FechaInformada.HasValue ? c.FechaInformada.Value.ToString("dd/MM/yyyy") : "",
+                                c.Pago1.HasValue || c.Pago2.HasValue || c.Pago3.HasValue,
+                                c.Auditado,
+                                c.InformadoEnPMIF
+                            }
+                       ));
+
+    @*@if (ViewBag.MostrarAlertaFecha == true)
+    {
+        <text>
+            $(document).ready(function () {
+                Mensajes.MostrarNotificacionIzquierda("<h2>ATENCIÓN</h2><h4>Se está cargando fuera del período de carga</h4>", "error");
+            });
+        </text>
+    }*@
+</script>
+
+<script src="~/Resources/components/bootstrap-3-typeahead/bootstrap3-typeahead.min.js"></script>
+<script src="~/Resources/js/comprobanterecibidoperiodo/Editar.js?v=@(DateTime.Now.Ticks)"></script>

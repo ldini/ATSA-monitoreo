@@ -1,0 +1,98 @@
+﻿@using Natom.ATSA.Monitoreo.Models
+@model Usuario
+
+@{
+    ViewBag.Title = "Nuevo";
+}
+
+<h2>Nuevo</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Usuario</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="row">
+        <div class="col-md-7">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control", @placeholder = "", @type = "text", @required = "required" } })
+                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Apellido, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.Apellido, new { htmlAttributes = new { @class = "form-control", @placeholder = "", @type = "text", @required = "required" } })
+                    @Html.ValidationMessageFor(model => model.Apellido, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "ejemplo@establecimiento.com", @type = "email", @required = "required" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div style="height:auto; border: 1px solid #ccc; border-radius: 4px; padding:15px;">
+
+                @Html.CheckBoxFor(m => m.PuedeCargarExcelFacturas, new { @class = "chkPermiso" })
+                @Html.LabelFor(m => m.PuedeCargarExcelFacturas)
+                <br />
+                @Html.CheckBoxFor(m => m.PuedeEliminarExcelFacturas, new { @class = "chkPermiso" })
+                @Html.LabelFor(m => m.PuedeEliminarExcelFacturas)
+                <br />
+                @Html.CheckBoxFor(m => m.PuedeAuditarConsiliacion, new { @class = "chkPermiso" })
+                @Html.LabelFor(m => m.PuedeAuditarConsiliacion)
+                <br />
+                @Html.CheckBoxFor(m => m.PuedeAuditarFactura, new { @class = "chkPermiso" })
+                @Html.LabelFor(m => m.PuedeAuditarFactura)
+                <br />
+                @Html.CheckBoxFor(m => m.PuedeDescargarExcelAuditoria, new { @class = "chkPermiso" })
+                @Html.LabelFor(m => m.PuedeDescargarExcelAuditoria)
+                <br />
+                @Html.CheckBoxFor(m => m.PuedeCargarExcelAuditoria, new { @class = "chkPermiso" })
+                @Html.LabelFor(m => m.PuedeCargarExcelAuditoria)
+                <div style="display:none">
+                    <br />
+                    @Html.CheckBoxFor(m => m.PuedeEliminarExcelAuditoria, new { @class = "chkPermiso" })
+                    @Html.LabelFor(m => m.PuedeEliminarExcelAuditoria)
+                </div>
+                <br />
+                @Html.CheckBoxFor(m => m.PuedeVerAuditorias, new { @class = "chkPermiso" })
+                @Html.LabelFor(m => m.PuedeVerAuditorias)
+                <br />
+                @Html.CheckBoxFor(m => m.PuedeDarDeAltaPeriodo, new { @class = "chkPermiso" })
+                @Html.LabelFor(m => m.PuedeDarDeAltaPeriodo)
+                <br />
+                @Html.CheckBoxFor(m => m.PuedeDarDeBajaPeriodo, new { @class = "chkPermiso" })
+                @Html.LabelFor(m => m.PuedeDarDeBajaPeriodo)
+                <br />
+                @Html.CheckBoxFor(m => m.PuedeCargarEnPeriodo, new { @class = "chkPermiso" })
+                @Html.LabelFor(m => m.PuedeCargarEnPeriodo)
+                <br />
+                @Html.CheckBoxFor(m => m.PuedeAnularEnPeriodo, new { @class = "chkPermiso" })
+                @Html.LabelFor(m => m.PuedeAnularEnPeriodo)
+            </div>
+            </div>
+    </div>
+    
+
+    <div>
+        <div class="col-md-offset-2 col-md-8">
+            <input type="button" class="btn btn-danger" value="Cancelar" onclick="location.href='/monitoreotest/Usuarios'" />
+            &nbsp;
+            <input type="button" value="Crear" class="btn btn-success" onclick="Grabar()" />
+        </div>
+    </div>
+</div>
+}
+
+<script src="~/Resources/js/usuarios/create.min.js"></script>

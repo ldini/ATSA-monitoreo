@@ -1,0 +1,120 @@
+﻿@using Natom.ATSA.Monitoreo.Models.ViewModels
+@model CompararComprobantesResult
+@{
+    ViewBag.Title = "Comparación de comprobantes";
+}
+
+<div class="row">
+    <div class="col-md-12" style="position: absolute; margin-top: -15px;">
+        <h2>Comparación de comprobantes de interfilial</h2>
+    </div>
+</div>
+<br />
+
+<div class="row">
+    <div class="col-md-12">
+        <table width="100%" id="tbl" class="table table-condensed">
+            <thead>
+                <tr>
+                    <th>
+                        Fecha
+                    </th>
+                    <th>
+                        Comprobante
+                    </th>
+                    <th>
+                        Monto
+                    </th>
+                    <th>
+                        Período
+                    </th>
+                    <th>
+                        Prestador
+                    </th>
+                    <th>
+                        Estado
+                    </th>
+                    <th>
+                        Auditada
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var comprobante in Model.ComprobantesFaltantesEnATSA)
+                {
+                    <tr>
+                        <td>
+                            @comprobante.Fecha.ToString("dd/MM/yyyy")
+                        </td>
+                        <td>
+                            @comprobante.Numero<br />
+                            <small style="font-weight:bold">@comprobante.TipoComprobante.Descripcion</small>
+                        </td>
+                        <td>
+                            @((comprobante.Monto ?? 0).ToString("C2"))
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            @(comprobante.Prestador == null ? comprobante.PrestadorRazonSocial : comprobante.Prestador.RazonSocial)<br />
+                            <small style="font-weight:bold">@(comprobante.Prestador == null ? comprobante.PrestadorCUIT : comprobante.Prestador.CUIT)</small>
+                        </td>
+                        <td>
+                            <small style="color:red;">FALTANTE</small>
+                        </td>
+                        <td>
+                            <input type="checkbox" disabled readonly  />
+                        </td>
+                    </tr>
+                }
+
+
+                @foreach (var comprobante in Model.ComprobantesEnATSA)
+                {
+                    <tr>
+                        <td>
+                            @comprobante.Fecha.ToString("dd/MM/yyyy")
+                        </td>
+                        <td>
+                            @comprobante.Numero<br />
+                            <small style="font-weight:bold">@comprobante.TipoComprobante.Descripcion</small>
+                        </td>
+                        <td>
+                            @((comprobante.Monto ?? 0).ToString("C2"))
+                        </td>
+                        <td>
+                            @comprobante.MesPeriodo.ToString().PadLeft(2, '0')/@comprobante.AnioPeriodo.ToString().PadLeft(4, '0')
+                        </td>
+                        <td>
+                            @(comprobante.Prestador == null ? comprobante.PrestadorRazonSocial : comprobante.Prestador.RazonSocial)<br />
+                            <small style="font-weight:bold">@(comprobante.Prestador == null ? comprobante.PrestadorCUIT : comprobante.Prestador.CUIT)</small>
+                        </td>
+                        <td>
+                            <small style="color:green;">INGRESADA</small>
+                        </td>
+                        <td>
+                            <input type="checkbox" disabled readonly @(comprobante.Auditado == true ? "checked" : "") />
+                        </td>
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#tbl').dataTable({
+            "bProcessing": false,
+            "bServerSide": false,
+            "bLengthChange": false,
+            "bPaginate": false,
+            "bFilter": true,
+            "bSort": false,
+            "bInfo": true
+        });
+    });
+</script>

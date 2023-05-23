@@ -1,0 +1,59 @@
+﻿<ul class="nav navbar-nav">
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-secret" aria-hidden="true"></i>&nbsp;&nbsp;ABM <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+            <li class="dropdown-submenu">
+                <a href="/monitoreotest/Usuarios">Usuarios</a>
+            </li>
+        </ul>
+    </li>
+
+    @* <LI> ITEM AL DE _MenuTop.cshtml *@
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cloud-upload"></span>&nbsp;&nbsp;Cargas <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+            <li class="dropdown-submenu">
+                <a href="javascript:CargarExcel()">Nueva carga</a>
+                <a href="/monitoreotest/Cargas">Ver todas</a>
+            </li>
+        </ul>
+    </li>
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-briefcase"></span>&nbsp;&nbsp;Auditorias <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+            <li class="dropdown-submenu">
+                <a href="/monitoreotest/auditorias/Index?estado=audit">Ver auditorias pendientes</a>
+                <a href="/monitoreotest/auditorias/Index?estado=consil">Ver consiliaciones pendientes</a>
+                <a href="/monitoreotest/Auditorias">Ver todas</a>
+                <a href="javascript:DescargarExcelDeudasPendientes()"><b>Descargar Excel deudas pendientes</b></a>
+            </li>
+        </ul>
+    </li>
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-file"></span>&nbsp;&nbsp;Comprobantes recibidos <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+            <li class="dropdown-submenu">
+                <a href="/monitoreotest/ComprobanteRecibidoPeriodo">Ver todos</a>
+                <a href="javascript:CargarArchivoComparacionComprobantes()">Comparación de comprobantes contra archivo</a>
+            </li>
+        </ul>
+    </li>
+    @* FIN <LI> ITEM AL DE _MenuTop.cshtml *@
+</ul>
+<ul class="nav navbar-nav navbar-right">
+    <li class="dropdown dropdown-user">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            &nbsp;<span class="caret"></span>
+            <div class="userData">
+                <span class="userName">@(((Natom.ATSA.Monitoreo.Models.Usuario)ViewBag.Usuario).Email)</span>
+                <span class="bizName">@(((Natom.ATSA.Monitoreo.Models.Usuario)ViewBag.Usuario).Nombre)</span>
+            </div>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a href="/monitoreotest/home/Logout">Salir del sistema</a></li>
+        </ul>
+    </li>
+</ul>
+@Html.Partial("_CargaExcelFacturas")
+@Html.Partial("_CargaComprobantesComparacion")
+@Html.Partial("_DescargarExcelDeudaActualizada")

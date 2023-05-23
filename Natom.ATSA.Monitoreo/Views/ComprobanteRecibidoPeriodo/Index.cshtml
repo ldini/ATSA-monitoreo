@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Comprobantes recibidos";
+}
+@Html.Hidden("EliminarPeriodoId")
+
+<style type="text/css">
+    #modalRendicionDetalle .modal-dialog {
+        width: 900px !important;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-8">
+        <h2>Comprobantes recibidos</h2>
+    </div>
+    <div class="col-md-4">
+        <div class="btn btn-success" onclick="AbrirModalNuevoPeriodo()" style="float: right; margin-top: 20px;">Nuevo período</div>
+        @if (((bool)ViewBag.EsAdmin) == true)
+        {
+            <div class="btn btn-primary" onclick="location.href = '/monitoreotest/pagos/Index'" style="float: right; margin-top: 20px; margin-right:10px">Pagos</div>
+        }
+    </div>
+</div>
+<br />
+
+<table width="100%" id="tbl" class="table table-condensed">
+    <thead>
+        <tr>
+            <th>
+                Período
+            </th>
+            <th>
+                Comprobantes
+            </th>
+            <th>
+                Suma total
+            </th>
+            <th>
+                Responsable
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+</table>
+
+@Html.Partial("~/Views/comprobanterecibidoperiodo/_NuevoPeriodo.cshtml")
+
+
+@Html.Partial("~/Views/Shared/_ModalMotivo.cshtml", new Natom.ATSA.Monitoreo.Models.ViewModels.MotivoViewModel() { ModalTitle = "Eliminar período", BtnActionTitle = "Eliminar" })
+<script src="~/Resources/js/comprobanterecibidoperiodo/index.min.js"></script>
+
+<script type="text/javascript">
+    function AbrirModalNuevoPeriodo() {
+        $("#modalNuevoPriodo").modal("show");
+    }
+</script>

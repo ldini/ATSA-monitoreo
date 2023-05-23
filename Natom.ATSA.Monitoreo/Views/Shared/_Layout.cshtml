@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATSA | @ViewBag.Title</title>
+    @*<base href="http://107.180.104.190:6001/MonitoreoTest/">*@
+    <link href="~/Resources/components/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Resources/components/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Resources/css/general.min.css" rel="stylesheet" />
+    <link href="~/Resources/components/DataTables-1.10.13/media/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Resources/components/chosen/bootstrap-chosen.css" rel="stylesheet" />
+    <script src="~/Resources/components/jquery-3.1.1/jquery.min.js"></script>
+    <script src="~/Resources/components/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="~/Resources/components/jquery-blockUI/jquery.blockUI.js"></script>
+    <script src="~/Resources/components/noty-2.4.1/js/noty/packaged/jquery.noty.packaged.min.js"></script>
+    <script src="~/Resources/components/DataTables-1.10.13/media/js/jquery.dataTables.min.js"></script>
+    <script src="~/Resources/components/DataTables-1.10.13/media/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/Resources/components/chosen/chosen.jquery.js"></script>
+    <script src="~/Resources/components/jquery-validation-1.17/dist/jquery.validate.min.js"></script>
+    <script src="~/Resources/js/general.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li>
+                            <img src="~/Resources/img/logo_white.png" width="50" height="50" style="float:left;" />
+                            <h4 style="float:left;">MONITOREO<br />DE FACTURAS</h4>
+                        </li>
+                    </ul>
+                    @if (ViewBag.Usuario != null)
+                    {
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        @Html.Partial("~/Views/Shared/_MenuTop" + (ViewBag.Usuario.UsuarioId == 0 ? "_admin" : "") + ".cshtml")
+                    </div>
+                    }
+                </div>
+            </nav>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    <div id="modalView" class="modal fade" role="dialog">
+
+    </div>
+
+    <div class="cargando" style="display:none;">
+        <label>
+            <strong>Procesando...</strong>
+            <br />
+            Aguarde por favor
+        </label>
+    </div>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

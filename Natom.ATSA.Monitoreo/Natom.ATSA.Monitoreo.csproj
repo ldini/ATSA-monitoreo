@@ -1,0 +1,1528 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6EBEDE93-9469-4AFE-A88F-85F3D37E61B3}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Natom.ATSA.Monitoreo</RootNamespace>
+    <AssemblyName>Natom.ATSA.Monitoreo</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.0.0.999, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.1.0.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.140.1000.523\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.140.1000.523\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.140.1000.523\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.140.1000.523\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebDesign, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.140.1000.523\lib\net40\Microsoft.ReportViewer.WebDesign.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.140.1000.523\lib\net40\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.140.1000.523\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.Entity.6.9.9\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.4.1\lib\net45\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.4.1\lib\net45\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.4.1\lib\net45\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.4.1\lib\net45\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AuditoriasController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ComprobanteRecibidoPeriodoController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\CargasController.cs" />
+    <Compile Include="Controllers\PagosController.cs" />
+    <Compile Include="Controllers\UsuariosController.cs" />
+    <Compile Include="DbMonitoreoContext.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Managers\AuditoriaManager.cs" />
+    <Compile Include="Managers\ComprobanteRecibidoPeriodoManager.cs" />
+    <Compile Include="Managers\EmailManager.cs" />
+    <Compile Include="Managers\PagosManager.cs" />
+    <Compile Include="Managers\UsuarioManager.cs" />
+    <Compile Include="Managers\CargaManager.cs" />
+    <Compile Include="Managers\SesionManager.cs" />
+    <Compile Include="Models\Carga.cs" />
+    <Compile Include="Models\Clinica.cs" />
+    <Compile Include="Models\ComprobanteRecibido.cs" />
+    <Compile Include="Models\ComprobanteRecibidoPeriodo.cs" />
+    <Compile Include="Models\DataTable\DataTableParams.cs" />
+    <Compile Include="Models\DataTable\JQueryDataTableParamModel.cs" />
+    <Compile Include="Models\Factura.cs" />
+    <Compile Include="Models\Prestacion.cs" />
+    <Compile Include="Models\Prestador.cs" />
+    <Compile Include="Models\TipoComprobante.cs" />
+    <Compile Include="Models\Usuario.cs" />
+    <Compile Include="Models\ViewModels\CompararComprobantesResult.cs" />
+    <Compile Include="Models\ViewModels\ListarAuditoriasResult.cs" />
+    <Compile Include="Models\ViewModels\ListarCargasResult.cs" />
+    <Compile Include="Models\ViewModels\ListarComprobantePeriodoResult.cs" />
+    <Compile Include="Models\ViewModels\ListarDeudasAlPeriodoResult.cs" />
+    <Compile Include="Models\ViewModels\ListarFacturasConSaldoParaPagarResult.cs" />
+    <Compile Include="Models\ViewModels\LoginView.cs" />
+    <Compile Include="Models\ViewModels\MotivoViewModel.cs" />
+    <Compile Include="Models\ViewModels\SaldoResult.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reporting\DataSetReporting.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetReporting.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reporting\ReportHelper.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="WorkbooksManagers\AuditoriaWorkbook.cs" />
+    <Compile Include="WorkbooksManagers\DeudaWorkbook.cs" />
+    <Compile Include="WorkbooksManagers\FacturasWorkbook.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\components\bootstrap-3-typeahead\bootstrap3-typeahead.js" />
+    <Content Include="Resources\components\bootstrap-3-typeahead\bootstrap3-typeahead.min.js" />
+    <Content Include="Resources\components\bootstrap-3-typeahead\Gruntfile.js" />
+    <Content Include="Resources\components\bootstrap-3.3.7\css\bootstrap-theme.css" />
+    <Content Include="Resources\components\bootstrap-3.3.7\css\bootstrap-theme.min.css" />
+    <Content Include="Resources\components\bootstrap-3.3.7\css\bootstrap.css" />
+    <Content Include="Resources\components\bootstrap-3.3.7\css\bootstrap.min.css" />
+    <Content Include="Resources\components\bootstrap-3.3.7\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Resources\components\bootstrap-3.3.7\js\bootstrap.js" />
+    <Content Include="Resources\components\bootstrap-3.3.7\js\bootstrap.min.js" />
+    <Content Include="Resources\components\bootstrap-3.3.7\js\npm.js" />
+    <Content Include="Resources\components\bootstrap-datepicker-3\bootstrap-datetimepicker.css" />
+    <Content Include="Resources\components\bootstrap-datepicker-3\bootstrap-datetimepicker.js" />
+    <Content Include="Resources\components\bootstrap-datepicker-3\moment.js" />
+    <Content Include="Resources\components\chosen\bootstrap-chosen.css" />
+    <Content Include="Resources\components\chosen\chosen-sprite.png" />
+    <Content Include="Resources\components\chosen\chosen.jquery.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\advanced_init\column_render.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\advanced_init\complex_header.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\advanced_init\defaults.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\advanced_init\dom_multiple_elements.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\advanced_init\dom_toolbar.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\advanced_init\dt_events.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\advanced_init\events_live.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\advanced_init\footer_callback.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\advanced_init\html5-data-attributes.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\advanced_init\html5-data-options.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\advanced_init\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\advanced_init\language_file.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\advanced_init\length_menu.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\advanced_init\object_dom_read.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\advanced_init\row_callback.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\advanced_init\row_grouping.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\advanced_init\sort_direction_control.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\ajax\custom_data_flat.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\ajax\custom_data_property.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\ajax\data\arrays.txt" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\ajax\data\arrays_custom_prop.txt" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\ajax\data\arrays_subobjects.txt" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\ajax\data\objects.txt" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\ajax\data\objects_deep.txt" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\ajax\data\objects_root_array.txt" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\ajax\data\objects_subarrays.txt" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\ajax\data\orthogonal.txt" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\ajax\deep.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\ajax\defer_render.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\ajax\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\ajax\null_data_source.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\ajax\objects.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\ajax\objects_subarrays.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\ajax\orthogonal-data.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\ajax\simple.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\api\add_row.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\api\api_in_init.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\api\counter_columns.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\api\form.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\api\highlight.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\api\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\api\multi_filter.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\api\multi_filter_select.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\api\regex.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\api\row_details.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\api\select_row.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\api\select_single_row.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\api\show_hide.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\api\tabs_and_scrolling.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\basic_init\alt_pagination.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\basic_init\comma-decimal.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\basic_init\complex_header.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\basic_init\dom.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\basic_init\filter_only.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\basic_init\flexible_width.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\basic_init\hidden_columns.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\basic_init\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\basic_init\language.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\basic_init\multiple_tables.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\basic_init\multi_col_sort.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\basic_init\scroll_x.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\basic_init\scroll_xy.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\basic_init\scroll_y.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\basic_init\scroll_y_dynamic.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\basic_init\state_save.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\basic_init\table_sorting.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\basic_init\zero_configuration.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\data_sources\ajax.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\data_sources\dom.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\data_sources\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\data_sources\js_array.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\data_sources\server_side.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\plug-ins\api.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\plug-ins\dom_sort.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\plug-ins\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\plug-ins\range_filtering.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\plug-ins\sorting_auto.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\plug-ins\sorting_manual.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\resources\demo.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\resources\demo.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\resources\details_close.png" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\resources\details_open.png" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\resources\examples.php" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\resources\syntax\shCore.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\resources\syntax\shCore.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\server_side\custom_vars.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\server_side\defer_loading.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\server_side\ids.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\server_side\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\server_side\jsonp.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\server_side\object_data.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\server_side\pipeline.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\server_side\post.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\server_side\row_details.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\server_side\scripts\ids-arrays.php" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\server_side\scripts\ids-objects.php" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\server_side\scripts\jsonp.php" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\server_side\scripts\mysql.sql" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\server_side\scripts\objects.php" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\server_side\scripts\post.php" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\server_side\scripts\postgres.sql" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\server_side\scripts\server_processing.php" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\server_side\scripts\sqlite.sql" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\server_side\scripts\sqlserver.sql" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\server_side\scripts\ssp.class.php" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\server_side\select_rows.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\server_side\simple.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\styling\bootstrap.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\styling\bootstrap4.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\styling\cell-border.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\styling\compact.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\styling\display.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\styling\foundation.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\styling\hover.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\styling\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\styling\jqueryUI.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\styling\material.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\styling\no-classes.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\styling\order-column.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\styling\row-border.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\styling\semanticui.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\styling\stripe.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\styling\uikit.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\css\autoFill.bootstrap.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\css\autoFill.bootstrap.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\css\autoFill.bootstrap4.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\css\autoFill.bootstrap4.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\css\autoFill.dataTables.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\css\autoFill.dataTables.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\css\autoFill.foundation.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\css\autoFill.foundation.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\css\autoFill.jqueryui.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\css\autoFill.jqueryui.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\css\autoFill.semanticui.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\css\autoFill.semanticui.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\examples\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\examples\initialisation\alwaysAsk.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\examples\initialisation\columns.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\examples\initialisation\events.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\examples\initialisation\fills.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\examples\initialisation\focus.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\examples\initialisation\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\examples\initialisation\keyTable.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\examples\initialisation\plugins.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\examples\initialisation\scrolling.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\examples\initialisation\simple.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\examples\styling\bootstrap.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\examples\styling\bootstrap4.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\examples\styling\foundation.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\examples\styling\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\examples\styling\jqueryui.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\examples\styling\semanticui.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\js\autoFill.bootstrap.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\js\autoFill.bootstrap.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\js\autoFill.bootstrap4.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\js\autoFill.bootstrap4.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\js\autoFill.foundation.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\js\autoFill.foundation.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\js\autoFill.jqueryui.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\js\autoFill.jqueryui.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\js\autoFill.semanticui.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\js\autoFill.semanticui.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\js\dataTables.autoFill.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\js\dataTables.autoFill.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\License.txt" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\css\buttons.bootstrap.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\css\buttons.bootstrap.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\css\buttons.bootstrap4.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\css\buttons.bootstrap4.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\css\buttons.dataTables.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\css\buttons.dataTables.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\css\buttons.foundation.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\css\buttons.foundation.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\css\buttons.jqueryui.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\css\buttons.jqueryui.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\css\buttons.semanticui.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\css\buttons.semanticui.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\api\addRemove.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\api\enable.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\api\group.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\api\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\api\text.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\column_visibility\columnGroups.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\column_visibility\columns.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\column_visibility\columnsToggle.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\column_visibility\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\column_visibility\layout.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\column_visibility\restore.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\column_visibility\simple.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\column_visibility\stateSave.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\column_visibility\text.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\flash\copyi18n.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\flash\filename.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\flash\hidden.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\flash\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\flash\pdfMessage.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\flash\pdfPage.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\flash\simple.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\flash\swfPath.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\flash\tsv.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\html5\columns.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\html5\copyi18n.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\html5\customFile.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\html5\excelBorder.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\html5\excelCellShading.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\html5\excelTextBold.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\html5\filename.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\html5\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\html5\outputFormat-function.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\html5\outputFormat-orthogonal.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\html5\pdfImage.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\html5\pdfMessage.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\html5\pdfOpen.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\html5\pdfPage.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\html5\simple.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\html5\tsv.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\initialisation\className.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\initialisation\collections-autoClose.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\initialisation\collections-sub.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\initialisation\collections.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\initialisation\custom.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\initialisation\export.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\initialisation\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\initialisation\keys.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\initialisation\multiple.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\initialisation\new.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\initialisation\pageLength.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\initialisation\plugins.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\initialisation\simple.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\print\autoPrint.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\print\columns.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\print\customisation.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\print\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\print\message.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\print\select.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\print\simple.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\styling\bootstrap.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\styling\bootstrap4.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\styling\foundation.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\styling\icons.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\styling\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\styling\jqueryui.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\examples\styling\semanticui.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\js\buttons.bootstrap.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\js\buttons.bootstrap.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\js\buttons.bootstrap4.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\js\buttons.bootstrap4.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\js\buttons.colVis.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\js\buttons.colVis.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\js\buttons.flash.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\js\buttons.flash.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\js\buttons.foundation.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\js\buttons.foundation.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\js\buttons.html5.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\js\buttons.html5.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\js\buttons.jqueryui.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\js\buttons.jqueryui.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\js\buttons.print.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\js\buttons.print.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\js\buttons.semanticui.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\js\buttons.semanticui.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\js\dataTables.buttons.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\js\dataTables.buttons.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\License.txt" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\swf\flashExport.swf" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\css\colReorder.bootstrap.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\css\colReorder.bootstrap.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\css\colReorder.bootstrap4.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\css\colReorder.bootstrap4.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\css\colReorder.dataTables.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\css\colReorder.dataTables.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\css\colReorder.foundation.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\css\colReorder.foundation.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\css\colReorder.jqueryui.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\css\colReorder.jqueryui.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\css\colReorder.semanticui.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\css\colReorder.semanticui.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\examples\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\examples\initialisation\col_filter.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\examples\initialisation\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\examples\initialisation\new_init.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\examples\initialisation\predefined.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\examples\initialisation\realtime.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\examples\initialisation\reset.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\examples\initialisation\scrolling.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\examples\initialisation\simple.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\examples\integration\colvis.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\examples\integration\fixedcolumns.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\examples\integration\fixedheader.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\examples\integration\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\examples\integration\responsive.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\examples\integration\server_side.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\examples\integration\state_save.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\examples\styling\alt_insert.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\examples\styling\bootstrap.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\examples\styling\bootstrap4.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\examples\styling\foundation.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\examples\styling\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\examples\styling\jqueryui.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\examples\styling\semanticui.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\js\dataTables.colReorder.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\js\dataTables.colReorder.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\License.txt" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\css\fixedColumns.bootstrap.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\css\fixedColumns.bootstrap.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\css\fixedColumns.bootstrap4.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\css\fixedColumns.bootstrap4.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\css\fixedColumns.dataTables.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\css\fixedColumns.dataTables.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\css\fixedColumns.foundation.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\css\fixedColumns.foundation.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\css\fixedColumns.jqueryui.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\css\fixedColumns.jqueryui.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\css\fixedColumns.semanticui.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\css\fixedColumns.semanticui.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\examples\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\examples\initialisation\colvis.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\examples\initialisation\css_size.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\examples\initialisation\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\examples\initialisation\index_column.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\examples\initialisation\left_right_columns.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\examples\initialisation\right_column.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\examples\initialisation\server-side-processing.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\examples\initialisation\simple.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\examples\initialisation\size_fixed.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\examples\initialisation\size_fluid.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\examples\initialisation\two_columns.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\examples\integration\api.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\examples\integration\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\examples\integration\select-checkbox.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\examples\integration\select.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\examples\styling\bootstrap.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\examples\styling\bootstrap4.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\examples\styling\colvis.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\examples\styling\col_filter.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\examples\styling\foundation.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\examples\styling\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\examples\styling\jqueryui.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\examples\styling\rowspan.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\examples\styling\rtl.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\examples\styling\semanticui.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\examples\styling\server-side-processing.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\js\dataTables.fixedColumns.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\js\dataTables.fixedColumns.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\License.txt" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\css\fixedHeader.bootstrap.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\css\fixedHeader.bootstrap.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\css\fixedHeader.bootstrap4.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\css\fixedHeader.bootstrap4.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\css\fixedHeader.dataTables.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\css\fixedHeader.dataTables.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\css\fixedHeader.foundation.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\css\fixedHeader.foundation.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\css\fixedHeader.jqueryui.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\css\fixedHeader.jqueryui.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\css\fixedHeader.semanticui.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\css\fixedHeader.semanticui.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\examples\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\examples\integration\buttons.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\examples\integration\colreorder.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\examples\integration\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\examples\integration\responsive-bootstrap.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\examples\integration\responsive.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\examples\options\enable-disable.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\examples\options\header_footer.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\examples\options\horizontal-scroll.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\examples\options\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\examples\options\new.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\examples\options\offset-automatic.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\examples\options\offset.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\examples\options\show-hide.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\examples\options\simple.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\examples\options\two_tables.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\examples\styling\bootstrap.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\examples\styling\bootstrap4.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\examples\styling\foundation.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\examples\styling\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\examples\styling\jqueryui.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\examples\styling\semanticui.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\js\dataTables.fixedHeader.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\js\dataTables.fixedHeader.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\License.txt" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\KeyTable\css\keyTable.bootstrap.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\KeyTable\css\keyTable.bootstrap.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\KeyTable\css\keyTable.bootstrap4.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\KeyTable\css\keyTable.bootstrap4.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\KeyTable\css\keyTable.dataTables.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\KeyTable\css\keyTable.dataTables.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\KeyTable\css\keyTable.foundation.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\KeyTable\css\keyTable.foundation.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\KeyTable\css\keyTable.jqueryui.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\KeyTable\css\keyTable.jqueryui.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\KeyTable\css\keyTable.semanticui.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\KeyTable\css\keyTable.semanticui.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\KeyTable\examples\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\KeyTable\examples\initialisation\blurable.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\KeyTable\examples\initialisation\events.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\KeyTable\examples\initialisation\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\KeyTable\examples\initialisation\scroller.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\KeyTable\examples\initialisation\scrolling.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\KeyTable\examples\initialisation\server-side.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\KeyTable\examples\initialisation\simple.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\KeyTable\examples\initialisation\stateSave.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\KeyTable\examples\styling\bootstrap.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\KeyTable\examples\styling\bootstrap4.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\KeyTable\examples\styling\focusStyle.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\KeyTable\examples\styling\foundation.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\KeyTable\examples\styling\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\KeyTable\examples\styling\jqueryui.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\KeyTable\examples\styling\semanticui.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\KeyTable\js\dataTables.keyTable.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\KeyTable\js\dataTables.keyTable.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\KeyTable\License.txt" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\css\responsive.bootstrap.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\css\responsive.bootstrap.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\css\responsive.bootstrap4.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\css\responsive.bootstrap4.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\css\responsive.dataTables.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\css\responsive.dataTables.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\css\responsive.foundation.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\css\responsive.foundation.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\css\responsive.jqueryui.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\css\responsive.jqueryui.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\css\responsive.semanticui.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\css\responsive.semanticui.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\child-rows\column-control.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\child-rows\custom-renderer.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\child-rows\disable-child-rows.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\child-rows\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\child-rows\right-column.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\child-rows\whole-row-control.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\column-control\auto.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\column-control\classes.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\column-control\colreorder.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\column-control\column-visibility.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\column-control\columnPriority.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\column-control\fixedHeader.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\column-control\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\column-control\init-classes.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\display-types\bootstrap-modal.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\display-types\bootstrap4-modal.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\display-types\foundation-modal.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\display-types\immediateShow.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\display-types\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\display-types\jqueryui-modal.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\display-types\modal.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\display-types\semanticui-modal.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\initialisation\ajax.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\initialisation\className.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\initialisation\default.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\initialisation\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\initialisation\new.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\initialisation\option.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\styling\bootstrap.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\styling\bootstrap4.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\styling\compact.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\styling\foundation.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\styling\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\styling\jqueryui.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\styling\scrolling.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\examples\styling\semanticui.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\js\dataTables.responsive.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\js\dataTables.responsive.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\js\responsive.bootstrap.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\js\responsive.bootstrap.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\js\responsive.bootstrap4.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\js\responsive.bootstrap4.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\js\responsive.foundation.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\js\responsive.foundation.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\js\responsive.jqueryui.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\js\responsive.jqueryui.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\js\responsive.semanticui.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\js\responsive.semanticui.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\License.txt" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\RowReorder\css\rowReorder.bootstrap.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\RowReorder\css\rowReorder.bootstrap.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\RowReorder\css\rowReorder.bootstrap4.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\RowReorder\css\rowReorder.bootstrap4.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\RowReorder\css\rowReorder.dataTables.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\RowReorder\css\rowReorder.dataTables.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\RowReorder\css\rowReorder.foundation.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\RowReorder\css\rowReorder.foundation.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\RowReorder\css\rowReorder.jqueryui.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\RowReorder\css\rowReorder.jqueryui.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\RowReorder\css\rowReorder.semanticui.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\RowReorder\css\rowReorder.semanticui.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\RowReorder\examples\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\RowReorder\examples\initialisation\defaults.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\RowReorder\examples\initialisation\events.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\RowReorder\examples\initialisation\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\RowReorder\examples\initialisation\responsive.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\RowReorder\examples\initialisation\restrictedOrdering.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\RowReorder\examples\initialisation\scroll.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\RowReorder\examples\initialisation\selector.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\RowReorder\examples\initialisation\simple.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\RowReorder\examples\styling\bootstrap.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\RowReorder\examples\styling\bootstrap4.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\RowReorder\examples\styling\foundation.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\RowReorder\examples\styling\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\RowReorder\examples\styling\jqueryui.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\RowReorder\examples\styling\reorderClass.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\RowReorder\examples\styling\semanticui.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\RowReorder\examples\styling\snapX.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\RowReorder\js\dataTables.rowReorder.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\RowReorder\js\dataTables.rowReorder.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\RowReorder\License.txt" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Scroller\css\scroller.bootstrap.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Scroller\css\scroller.bootstrap.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Scroller\css\scroller.bootstrap4.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Scroller\css\scroller.bootstrap4.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Scroller\css\scroller.dataTables.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Scroller\css\scroller.dataTables.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Scroller\css\scroller.foundation.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Scroller\css\scroller.foundation.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Scroller\css\scroller.jqueryui.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Scroller\css\scroller.jqueryui.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Scroller\css\scroller.semanticui.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Scroller\css\scroller.semanticui.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Scroller\examples\data\2500.txt" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Scroller\examples\data\ssp.php" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Scroller\examples\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Scroller\examples\initialisation\api_scrolling.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Scroller\examples\initialisation\fixedColumns.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Scroller\examples\initialisation\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Scroller\examples\initialisation\large_js_source.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Scroller\examples\initialisation\select.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Scroller\examples\initialisation\server-side_processing.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Scroller\examples\initialisation\simple.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Scroller\examples\initialisation\state_saving.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Scroller\examples\styling\bootstrap.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Scroller\examples\styling\bootstrap4.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Scroller\examples\styling\foundation.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Scroller\examples\styling\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Scroller\examples\styling\jqueryui.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Scroller\examples\styling\semanticui.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Scroller\js\dataTables.scroller.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Scroller\js\dataTables.scroller.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Scroller\License.txt" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\css\select.bootstrap.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\css\select.bootstrap.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\css\select.bootstrap4.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\css\select.bootstrap4.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\css\select.dataTables.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\css\select.dataTables.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\css\select.foundation.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\css\select.foundation.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\css\select.jqueryui.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\css\select.jqueryui.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\css\select.semanticui.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\css\select.semanticui.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\examples\api\cancellableEvents.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\examples\api\events.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\examples\api\get.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\examples\api\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\examples\api\select.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\examples\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\examples\initialisation\blurable.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\examples\initialisation\buttons.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\examples\initialisation\cells.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\examples\initialisation\checkbox.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\examples\initialisation\deferRender.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\examples\initialisation\i18n.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\examples\initialisation\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\examples\initialisation\multi.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\examples\initialisation\reload.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\examples\initialisation\simple.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\examples\initialisation\single.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\examples\styling\bootstrap.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\examples\styling\bootstrap4.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\examples\styling\foundation.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\examples\styling\index.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\examples\styling\jqueryui.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\examples\styling\semanticui.html" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\js\dataTables.select.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\js\dataTables.select.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\License.txt" />
+    <Content Include="Resources\components\DataTables-1.10.13\license.txt" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\css\dataTables.bootstrap.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\css\dataTables.bootstrap.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\css\dataTables.bootstrap4.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\css\dataTables.foundation.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\css\dataTables.foundation.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\css\dataTables.jqueryui.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\css\dataTables.jqueryui.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\css\dataTables.material.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\css\dataTables.material.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\css\dataTables.semanticui.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\css\dataTables.semanticui.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\css\dataTables.uikit.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\css\dataTables.uikit.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\css\jquery.dataTables.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\css\jquery.dataTables.min.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\css\jquery.dataTables_themeroller.css" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\images\favicon.ico" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\images\sort_asc.png" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\images\sort_asc_disabled.png" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\images\sort_both.png" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\images\sort_desc.png" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\images\sort_desc_disabled.png" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\js\dataTables.bootstrap.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\js\dataTables.bootstrap.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\js\dataTables.bootstrap4.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\js\dataTables.bootstrap4.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\js\dataTables.foundation.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\js\dataTables.foundation.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\js\dataTables.jqueryui.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\js\dataTables.jqueryui.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\js\dataTables.material.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\js\dataTables.material.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\js\dataTables.semanticui.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\js\dataTables.semanticui.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\js\dataTables.uikit.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\js\dataTables.uikit.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\js\jquery.dataTables.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\js\jquery.dataTables.min.js" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\js\jquery.js" />
+    <Content Include="Resources\components\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="Resources\components\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="Resources\components\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Resources\components\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="Resources\components\jquery-3.1.1\jquery.min.js" />
+    <Content Include="Resources\components\jquery-blockUI\jquery.blockUI.js" />
+    <Content Include="Resources\components\jquery-ui-1.12.1\images\ui-icons_444444_256x240.png" />
+    <Content Include="Resources\components\jquery-ui-1.12.1\images\ui-icons_555555_256x240.png" />
+    <Content Include="Resources\components\jquery-ui-1.12.1\images\ui-icons_777620_256x240.png" />
+    <Content Include="Resources\components\jquery-ui-1.12.1\images\ui-icons_777777_256x240.png" />
+    <Content Include="Resources\components\jquery-ui-1.12.1\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Resources\components\jquery-ui-1.12.1\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Resources\components\jquery-ui-1.12.1\jquery-ui.css" />
+    <Content Include="Resources\components\jquery-ui-1.12.1\jquery-ui.js" />
+    <Content Include="Resources\components\jquery-ui-1.12.1\jquery-ui.min.css" />
+    <Content Include="Resources\components\jquery-ui-1.12.1\jquery-ui.min.js" />
+    <Content Include="Resources\components\jquery-ui-1.12.1\jquery-ui.structure.css" />
+    <Content Include="Resources\components\jquery-ui-1.12.1\jquery-ui.structure.min.css" />
+    <Content Include="Resources\components\jquery-ui-1.12.1\jquery-ui.theme.css" />
+    <Content Include="Resources\components\jquery-ui-1.12.1\jquery-ui.theme.min.css" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\ajaxSubmit-integration-demo.html" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\bootstrap\index.html" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\captcha\captcha.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\captcha\images\button.png" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\captcha\images\image.php" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\captcha\image_req.php" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\captcha\index.php" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\captcha\newsession.php" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\captcha\process.php" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\captcha\rand.php" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\captcha\style.css" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\cinema\index.html" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\cinema\plan_9.jpg" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\cinema\refer_madness.jpg" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\cinema\saucer_men.jpg" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\css\cmxform.css" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\css\cmxformTemplate.css" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\css\core.css" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\css\reset.css" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\css\screen.css" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\custom-messages-data-demo.html" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\custom-methods-demo.html" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\dynamic-totals.html" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\errorcontainer-demo.html" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\errors-within-labels.html" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\file_input.html" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\images\bg.gif" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\images\checked.gif" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\images\cmxform-divider.gif" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\images\cmxform-fieldset.gif" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\images\loading.gif" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\images\unchecked.gif" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\index.html" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\jquerymobile.html" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\login\images\bg.gif" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\login\images\header1.jpg" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\login\images\page.gif" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\login\images\required_star.gif" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\login\index.html" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\login\screen.css" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\marketo\images\backRequiredGray.gif" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\marketo\images\back_green-fade.gif" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\marketo\images\back_nav_blue.gif" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\marketo\images\blank.gif" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\marketo\images\button-submit.gif" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\marketo\images\favicon.ico" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\marketo\images\help.png" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\marketo\images\left-nav-callout-long.png" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\marketo\images\login-sprite.gif" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\marketo\images\logo_marketo.gif" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\marketo\images\sf.png" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\marketo\images\step1-24.gif" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\marketo\images\step2-24.gif" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\marketo\images\step3-24.gif" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\marketo\images\tab-sprite.gif" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\marketo\images\tab_green.gif" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\marketo\images\time.png" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\marketo\images\toggle.gif" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\marketo\images\warning.gif" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\marketo\index.html" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\marketo\jquery.maskedinput.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\marketo\mktSignup.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\marketo\step2.htm" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\marketo\stylesheet.css" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\milk\bg.gif" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\milk\index.html" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\milk\left_white.png" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\milk\milk.css" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\milk\milk.png" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\milk\right_white.png" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\multipart\index.html" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\multipart\style.css" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\radio-checkbox-select-demo.html" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\requirejs\app.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\requirejs\index.html" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\semantic-ui\index.html" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\site-demos.css" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\themerollered.html" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\tinymce4\index.html" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\tinymce\index.html" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\tinymce\themes\simple\editor_template.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\tinymce\themes\simple\img\icons.gif" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\tinymce\themes\simple\langs\en.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\tinymce\themes\simple\skins\default\ui.css" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\tinymce\tiny_mce.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\additional-methods.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\additional-methods.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\jquery.validate.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\jquery.validate.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_ar.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_ar.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_az.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_az.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_bg.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_bg.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_bn_BD.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_bn_BD.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_ca.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_ca.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_cs.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_cs.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_da.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_da.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_de.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_de.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_el.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_el.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_es.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_es.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_es_AR.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_es_AR.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_es_PE.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_es_PE.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_et.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_et.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_eu.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_eu.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_fa.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_fa.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_fi.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_fi.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_fr.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_fr.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_ge.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_ge.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_gl.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_gl.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_he.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_he.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_hr.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_hr.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_hu.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_hu.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_hy_AM.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_hy_AM.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_id.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_id.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_is.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_is.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_it.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_it.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_ja.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_ja.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_ka.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_ka.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_kk.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_kk.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_ko.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_ko.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_lt.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_lt.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_lv.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_lv.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_mk.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_mk.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_my.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_my.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_nl.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_nl.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_no.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_no.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_pl.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_pl.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_pt_BR.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_pt_BR.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_pt_PT.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_pt_PT.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_ro.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_ro.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_ru.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_ru.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_sd.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_sd.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_si.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_si.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_sk.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_sk.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_sl.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_sl.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_sr.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_sr.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_sr_lat.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_sr_lat.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_sv.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_sv.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_th.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_th.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_tj.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_tj.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_tr.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_tr.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_uk.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_uk.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_ur.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_ur.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_vi.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_vi.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_zh.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_zh.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_zh_TW.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\messages_zh_TW.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\methods_de.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\methods_de.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\methods_es_CL.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\methods_es_CL.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\methods_fi.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\methods_fi.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\methods_nl.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\methods_nl.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\methods_pt.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\dist\localization\methods_pt.min.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\Gruntfile.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\lib\jquery-1.11.1.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\lib\jquery-1.7.2.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\lib\jquery-1.8.3.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\lib\jquery-1.9.1.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\lib\jquery-3.1.1.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\lib\jquery.form.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\lib\jquery.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\lib\jquery.mockjax-1.5.3.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\lib\jquery.mockjax-2.2.1.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\lib\jquery.mockjax.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\lib\jquery.simulate.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\lib\require.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\accept.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\additional.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\alphanumeric.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\bankaccountNL.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\bankorgiroaccountNL.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\bic.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\cifES.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\cpfBR.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\creditcard.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\creditcardtypes.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\currency.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\dateFA.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\dateITA.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\dateNL.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\extension.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\giroaccountNL.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\iban.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\integer.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\ipv4.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\ipv6.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\lettersonly.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\letterswithbasicpunc.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\mobileNL.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\mobileUK.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\netmask.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\nieES.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\nifES.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\nipPL.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\notEqualTo.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\nowhitespace.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\pattern.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\phoneNL.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\phonesUK.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\phoneUK.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\phoneUS.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\postalcodeBR.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\postalCodeCA.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\postalcodeIT.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\postalcodeNL.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\postcodeUK.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\require_from_group.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\skip_or_fill_minimum.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\statesUS.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\strippedminlength.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\time.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\time12h.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\url2.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\vinUS.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\zipcodeUS.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\additional\ziprange.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\ajax.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\core.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_ar.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_az.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_bg.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_bn_BD.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_ca.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_cs.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_da.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_de.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_el.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_es.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_es_AR.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_es_PE.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_et.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_eu.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_fa.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_fi.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_fr.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_ge.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_gl.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_he.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_hr.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_hu.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_hy_AM.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_id.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_is.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_it.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_ja.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_ka.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_kk.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_ko.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_lt.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_lv.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_mk.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_my.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_nl.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_no.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_pl.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_pt_BR.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_pt_PT.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_ro.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_ru.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_sd.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_si.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_sk.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_sl.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_sr.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_sr_lat.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_sv.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_th.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_tj.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_tr.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_uk.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_ur.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_vi.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_zh.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\messages_zh_TW.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\methods_de.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\methods_es_CL.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\methods_fi.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\methods_nl.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\src\localization\methods_pt.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\test\additional\creditcard.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\test\additional\netmask.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\test\aria.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\test\error-placement.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\test\index.html" />
+    <Content Include="Resources\components\jquery-validation-1.17\test\messages.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\test\methods.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\test\rules.js" />
+    <Content Include="Resources\components\jquery-validation-1.17\test\test.js" />
+    <Content Include="Resources\components\noty-2.4.1\js\noty\jquery.noty.js" />
+    <Content Include="Resources\components\noty-2.4.1\js\noty\layouts\bottom.js" />
+    <Content Include="Resources\components\noty-2.4.1\js\noty\layouts\bottomCenter.js" />
+    <Content Include="Resources\components\noty-2.4.1\js\noty\layouts\bottomLeft.js" />
+    <Content Include="Resources\components\noty-2.4.1\js\noty\layouts\bottomRight.js" />
+    <Content Include="Resources\components\noty-2.4.1\js\noty\layouts\center.js" />
+    <Content Include="Resources\components\noty-2.4.1\js\noty\layouts\centerLeft.js" />
+    <Content Include="Resources\components\noty-2.4.1\js\noty\layouts\centerRight.js" />
+    <Content Include="Resources\components\noty-2.4.1\js\noty\layouts\inline.js" />
+    <Content Include="Resources\components\noty-2.4.1\js\noty\layouts\top.js" />
+    <Content Include="Resources\components\noty-2.4.1\js\noty\layouts\topCenter.js" />
+    <Content Include="Resources\components\noty-2.4.1\js\noty\layouts\topLeft.js" />
+    <Content Include="Resources\components\noty-2.4.1\js\noty\layouts\topRight.js" />
+    <Content Include="Resources\components\noty-2.4.1\js\noty\packaged\jquery.noty.packaged.js" />
+    <Content Include="Resources\components\noty-2.4.1\js\noty\packaged\jquery.noty.packaged.min.js" />
+    <Content Include="Resources\components\noty-2.4.1\js\noty\promise.js" />
+    <Content Include="Resources\components\noty-2.4.1\js\noty\themes\bootstrap.js" />
+    <Content Include="Resources\components\noty-2.4.1\js\noty\themes\default.js" />
+    <Content Include="Resources\components\noty-2.4.1\js\noty\themes\metroui.js" />
+    <Content Include="Resources\components\noty-2.4.1\js\noty\themes\relax.js" />
+    <Content Include="Resources\components\noty-2.4.1\js\noty\themes\semanticUI.js" />
+    <Content Include="Resources\css\general.css" />
+    <Content Include="Resources\css\general.min.css">
+      <DependentUpon>general.css</DependentUpon>
+    </Content>
+    <Content Include="Resources\css\Home\login.css" />
+    <Content Include="Resources\css\Home\login.min.css">
+      <DependentUpon>login.css</DependentUpon>
+    </Content>
+    <Content Include="Resources\img\loading.gif" />
+    <Content Include="Resources\img\logo.png" />
+    <Content Include="Resources\img\logo_white.png" />
+    <Content Include="Resources\js\Auditorias\VerConsiliacion.js" />
+    <Content Include="Resources\js\Auditorias\VerAuditoria.js" />
+    <Content Include="Resources\js\Auditorias\index.js" />
+    <Content Include="Resources\js\Auditorias\index.min.js">
+      <DependentUpon>index.js</DependentUpon>
+    </Content>
+    <Content Include="Resources\js\Auditorias\VerAuditoria.min.js">
+      <DependentUpon>VerAuditoria.js</DependentUpon>
+    </Content>
+    <Content Include="Resources\js\Auditorias\VerConsiliacion.min.js">
+      <DependentUpon>VerConsiliacion.js</DependentUpon>
+    </Content>
+    <Content Include="Resources\js\Cargas\index.min.js">
+      <DependentUpon>index.js</DependentUpon>
+    </Content>
+    <Content Include="Resources\js\ComprobanteRecibidoPeriodo\Editar.js" />
+    <Content Include="Resources\js\ComprobanteRecibidoPeriodo\index.js" />
+    <Content Include="Resources\js\ComprobanteRecibidoPeriodo\index.min.js">
+      <DependentUpon>index.js</DependentUpon>
+    </Content>
+    <Content Include="Resources\js\Pagos\index.js" />
+    <Content Include="Resources\js\Pagos\index.min.js">
+      <DependentUpon>index.js</DependentUpon>
+    </Content>
+    <Content Include="Resources\js\Usuarios\create.js" />
+    <Content Include="Resources\js\Usuarios\create.min.js">
+      <DependentUpon>create.js</DependentUpon>
+    </Content>
+    <Content Include="Resources\js\Usuarios\edit.js" />
+    <Content Include="Resources\js\Usuarios\edit.min.js">
+      <DependentUpon>edit.js</DependentUpon>
+    </Content>
+    <Content Include="Resources\js\Usuarios\index.js" />
+    <Content Include="Resources\js\general.js" />
+    <Content Include="Resources\js\general.min.js">
+      <DependentUpon>general.js</DependentUpon>
+    </Content>
+    <Content Include="Resources\js\Cargas\index.js" />
+    <Content Include="Resources\js\Usuarios\index.min.js">
+      <DependentUpon>index.js</DependentUpon>
+    </Content>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\Base\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bundleconfig.json" />
+    <Content Include="bundleconfig.json.bindings">
+      <DependentUpon>bundleconfig.json</DependentUpon>
+    </Content>
+    <None Include="packages.config" />
+    <Content Include="Resources\components\bootstrap-3.3.7\css\bootstrap-theme.css.map" />
+    <Content Include="Resources\components\bootstrap-3.3.7\css\bootstrap-theme.min.css.map" />
+    <Content Include="Resources\components\bootstrap-3.3.7\css\bootstrap.css.map" />
+    <Content Include="Resources\components\bootstrap-3.3.7\css\bootstrap.min.css.map" />
+    <Content Include="Resources\components\bootstrap-3.3.7\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Resources\components\bootstrap-3.3.7\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Resources\components\bootstrap-3.3.7\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Resources\components\bootstrap-3.3.7\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Resources\components\DataTables-1.10.13\Contributing.md" />
+    <Content Include="Resources\components\DataTables-1.10.13\examples\resources\syntax\Syntax Highlighter license" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\AutoFill\Readme.md" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\css\common.scss" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\css\mixins.scss" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Buttons\Readme.md" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\ColReorder\Readme.md" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedColumns\Readme.md" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\FixedHeader\Readme.md" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\KeyTable\Readme.md" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Responsive\Readme.md" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\RowReorder\css\semanticui.scss" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\RowReorder\Readme.md" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Scroller\Readme.md" />
+    <Content Include="Resources\components\DataTables-1.10.13\extensions\Select\Readme.md" />
+    <Content Include="Resources\components\DataTables-1.10.13\ISSUE_TEMPLATE.md" />
+    <Content Include="Resources\components\DataTables-1.10.13\media\images\Sorting icons.psd" />
+    <Content Include="Resources\components\DataTables-1.10.13\Readme.md" />
+    <Content Include="Resources\components\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="Resources\components\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Resources\components\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="Resources\components\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Resources\components\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="Resources\components\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="Resources\components\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="Resources\components\font-awesome-4.7.0\less\core.less" />
+    <Content Include="Resources\components\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="Resources\components\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="Resources\components\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="Resources\components\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="Resources\components\font-awesome-4.7.0\less\list.less" />
+    <Content Include="Resources\components\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="Resources\components\font-awesome-4.7.0\less\path.less" />
+    <Content Include="Resources\components\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="Resources\components\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="Resources\components\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="Resources\components\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="Resources\components\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="Resources\components\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="Resources\components\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="Resources\components\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="Resources\components\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="Resources\components\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="Resources\components\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="Resources\components\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="Resources\components\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="Resources\components\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="Resources\components\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="Resources\components\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="Resources\components\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="Resources\components\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="Resources\components\jquery-validation-1.17\demo\captcha\fonts\Anorexia.ttf" />
+    <Content Include="Resources\components\jquery-validation-1.17\package.json" />
+    <Content Include="Resources\components\jquery-validation-1.17\README.md" />
+    <Content Include="Views\Shared\_MenuTop.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Shared\_MenuTop_admin.cshtml" />
+    <Content Include="Views\Usuarios\Index.cshtml" />
+    <Content Include="Views\Usuarios\Create.cshtml" />
+    <Content Include="Views\Usuarios\RecuperoDeClave.cshtml" />
+    <Content Include="Views\Usuarios\Edit.cshtml" />
+    <Content Include="Reporting\DataSetReporting.xsc">
+      <DependentUpon>DataSetReporting.xsd</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Reporting\DataSetReporting.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetReporting.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reporting\DataSetReporting.xss">
+      <DependentUpon>DataSetReporting.xsd</DependentUpon>
+    </Content>
+    <Content Include="Views\Shared\_CargaExcelFacturas.cshtml" />
+    <Content Include="Views\Cargas\Index.cshtml" />
+    <Content Include="Views\Shared\_ModalMotivo.cshtml" />
+    <Content Include="Resources\components\bootstrap-3-typeahead\.jscsrc" />
+    <Content Include="Resources\components\bootstrap-3-typeahead\.jshintrc" />
+    <Content Include="Resources\components\bootstrap-3-typeahead\bower.json" />
+    <Content Include="Resources\components\bootstrap-3-typeahead\composer.json" />
+    <Content Include="Resources\components\bootstrap-3-typeahead\package.json" />
+    <Content Include="Views\Auditorias\Index.cshtml" />
+    <Content Include="Views\Auditorias\_ModalAuditoria.cshtml" />
+    <Content Include="Views\Auditorias\VerAuditoria.cshtml" />
+    <Content Include="Views\Auditorias\_ModalConsiliacion.cshtml" />
+    <Content Include="Views\Shared\_CargaExcelAuditorias.cshtml" />
+    <Content Include="Views\Auditorias\Error.cshtml" />
+    <Content Include="Views\Auditorias\VerConsiliacion.cshtml" />
+    <Content Include="Views\Shared\SinPermisos.cshtml" />
+    <Content Include="Views\Shared\_DescargarExcelDeudaActualizada.cshtml" />
+    <Content Include="Views\ComprobanteRecibidoPeriodo\Index.cshtml" />
+    <Content Include="Views\ComprobanteRecibidoPeriodo\_NuevoPeriodo.cshtml" />
+    <Content Include="Views\ComprobanteRecibidoPeriodo\Editar.cshtml" />
+    <Content Include="Views\ComprobanteRecibidoPeriodo\_RowEditar.cshtml" />
+    <Content Include="Views\Pagos\Index.cshtml" />
+    <Content Include="Views\Shared\_CargaComprobantesComparacion.cshtml" />
+    <Content Include="Views\Cargas\ComparacionComprobantes.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reporting\CuponPagoReport.rdlc" />
+    <EmbeddedResource Include="Reporting\LiquidacionReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporting\ListadoLiquidacionesReport.rdlc" />
+    <EmbeddedResource Include="Reporting\ListarAportesPorEstablecimientoReport.rdlc" />
+    <EmbeddedResource Include="Reporting\ListarLiquidacionesAfiliadosEnFaltaReport.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52868</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:52868/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\BuildBundlerMinifier.3.2.435\build\BuildBundlerMinifier.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\BuildBundlerMinifier.3.2.435\build\BuildBundlerMinifier.targets'))" />
+  </Target>
+  <Import Project="..\packages\BuildBundlerMinifier.3.2.435\build\BuildBundlerMinifier.targets" Condition="Exists('..\packages\BuildBundlerMinifier.3.2.435\build\BuildBundlerMinifier.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

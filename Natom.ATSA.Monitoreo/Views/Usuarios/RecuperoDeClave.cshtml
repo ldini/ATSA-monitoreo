@@ -1,0 +1,26 @@
+﻿@model Natom.ATSA.Monitoreo.Models.ViewModels.LoginView
+@{
+    ViewBag.Title = "Generación de clave";
+}
+
+<link href="~/Resources/css/home/login.min.css" rel="stylesheet" />
+
+@using (Html.BeginForm("RecuperoDeClave", "Usuarios", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.UsuarioId)
+    <div class="container">
+        <div class="card card-container">
+            <img id="profile-img" class="profile-img-card" src="~/Resources/img/logo.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <form class="form-signin">
+                <span id="reauth-email" class="reauth-email"></span>
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email", @readonly="readonly", @required = "required" })
+                @Html.PasswordFor(m => m.Clave, new { @class = "form-control", @placeholder = "Clave", @required = "required", @autofocus = "autofocus" })
+
+                <center><i style="color:red;">@ViewBag.ErrorMessage</i></center>
+                <br />
+                <button class="btn btn-lg btn-success btn-block btn-signin" type="submit">Generar clave</button>
+            </form><!-- /form -->
+        </div><!-- /card-container -->
+    </div><!-- /container -->
+}

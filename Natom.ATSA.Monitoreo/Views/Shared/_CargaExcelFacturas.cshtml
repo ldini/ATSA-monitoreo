@@ -1,0 +1,184 @@
+﻿<script type="text/javascript">
+    $(document).ready(function () {
+        $("#Mes").chosen();
+        $("#Anio").chosen();
+    });
+    function CargarExcel() {
+        $("#modalCargaExcelFacturas").modal("show");
+    }
+</script>
+<script src="~/Resources/components/bootstrap-3-typeahead/bootstrap3-typeahead.min.js"></script>
+<style type="text/css">
+    #modalCargaExcelFacturas .chosen-container {
+        width: 50% !important;
+    }
+</style>
+<div id="modalCargaExcelFacturas" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" style="color:black!important">Cargar Excel Facturas</h4>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("UploadExcelFacturas", "Cargas", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div style="border:1px solid #ccc;border-radius:4px;padding:2px;">
+                        <input type="file" accept=".xlsx" name="files" id="files" />
+                        <input type="submit" id="btnSubmitCargaExcelFacturas" style="display:none" />
+                    </div>
+                    <span id="ErrorFormExcelFacturas" style="color:red;display:none;">Debes seleccionar el archivo .xlsx de facturas.</span>
+                    <div class="input-group" style="margin-top:20px;">
+                        <span class="input-group-addon">
+                            <span aria-hidden="true">Periodo</span>
+                        </span>
+                        <select id="Mes" name="Mes" class="form-control" required>
+                            <option value="">Mes</option>
+                            <option value="1">Enero</option>
+                            <option value="2">Febrero</option>
+                            <option value="3">Marzo</option>
+                            <option value="4">Abril</option>
+                            <option value="5">Mayo</option>
+                            <option value="6">Junio</option>
+                            <option value="7">Julio</option>
+                            <option value="8">Agosto</option>
+                            <option value="9">Septiembre</option>
+                            <option value="10">Octubre</option>
+                            <option value="11">Noviembre</option>
+                            <option value="12">Diciembre</option>
+                        </select>
+                        <select id="Anio" name="Anio" class="form-control" required>
+                            <option value="">Año</option>
+                            @for (int i = 2018; i <= DateTime.Now.Year; i++)
+                            {
+                                <option value="@i">@i</option>
+                            }
+                        </select>
+                    </div>
+                    <span id="ErrorFormPeriodo" style="color:red;display:none;">Los campos Mes y Año son obligatorios.</span>
+                    <div class="input-group" style="margin-top:20px;">
+                        <span class="input-group-addon">
+                            <span aria-hidden="true">Clinica</span>
+                        </span>
+                        <input type="text" name="Clinica" id="Clinica" class="form-control" autocomplete="off" placeholder="Ingrese nombre de la clinica" required />
+                        <input type="hidden" id="ClinicaId" name="ClinicaId" />
+                    </div>
+                    <span id="ErrorFormClinica" style="color:red;display:none;">El campo clinica es obligatorio.</span>
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float:left;">Cancelar</button>
+                <button type="button" class="btn btn-success" id="btnCargarExcel" style="float:right;">Cargar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    var clinicas = {};
+    $(document).ready(function () {
+        $('#Clinica').typeahead({
+            minLength: 1,
+            items: 20,
+            matcher: function (item) { return true; },
+            source: function (query, process) {
+                clinicas = {};
+
+                $.ajax({
+                    type: "POST",
+                    url: '/monitoreotest/cargas/ObtenerClinicas',
+                    data: JSON.stringify({
+                        clinicas: query
+                    }),
+                    dataType: "json",
+                    contentType: "application/json",
+                    success: function (data) {
+                        objects = TypeAhead.constructMap(data.datos, clinicas);
+                        process(objects);
+                    }
+                });
+            },
+            updater: function (item, dom) {
+                $("#ClinicaId").val(clinicas[item].id);
+                $("#Clinica").val(clinicas[item].label);
+
+                return item;
+            }
+        });
+
+        $("#ClinicaId").val(0);
+        $("#Clinica").on('keypress', function () {
+            $("#ClinicaId").val(0);
+        });
+
+        $("#btnCargarExcel").on('click', function () {
+            var mes = $("#Mes").val();
+            var anio = $("#Anio").val();
+            var clinica = $("#Clinica").val();
+            var error = false;
+
+            if ($("#files").val() == "") {
+                $("#ErrorFormExcelFacturas").show();
+                error = true;
+            } else {
+                $("#ErrorFormExcelFacturas").hide();
+            }
+
+            //Validacion mes
+            if (mes > 0) {
+                $("#ErrorFormPeriodo").hide();
+            }
+            else {
+                $("#ErrorFormPeriodo").show();
+                error = true;
+            }
+
+            //Validacio año
+            if (anio > 0) {
+                $("#ErrorFormPeriodo").hide();
+            }
+            else {
+                $("#ErrorFormPeriodo").show();
+                error = true;
+            }
+
+            //Validacion clinica
+            if (clinica.length > 0) {
+                $("#ErrorFormClinica").hide();
+            }
+            else {
+                $("#ErrorFormClinica").show();
+                error = true;
+            }
+
+            if (!error) {
+                MostrarCargando();
+                $.ajax({
+                    type: "POST",
+                    url: '/monitoreotest/cargas/ValidarPeriodo',
+                    data: JSON.stringify({
+                        Mes: $("#Mes").val(),
+                        Anio: $("#Anio").val(),
+                        Clinica: $("#Clinica").val(),
+                        ClinicaId: $("#ClinicaId").val()
+                    }),
+                    dataType: "json",
+                    contentType: "application/json",
+                    success: function (data) {
+                        if (data.success) {
+                            $('#btnSubmitCargaExcelFacturas').click();
+                        }
+                        else {
+                            OcultarCargando();
+                            Mensajes.MostrarError(data.error);
+                        }
+                    }
+                });
+            }
+
+        });
+    });
+</script>

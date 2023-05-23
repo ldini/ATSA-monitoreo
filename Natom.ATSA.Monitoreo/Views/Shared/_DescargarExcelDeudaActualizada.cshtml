@@ -1,0 +1,77 @@
+﻿<script type="text/javascript">
+    $(document).ready(function () {
+        $("#MesDeudaActualizada").chosen();
+        $("#AnioDeudaActualizada").chosen();
+    });
+    function DescargarExcelDeudasPendientes() {
+        $("#modalDescargaExcelDeudasPend").modal("show");
+    }
+</script>
+<style type="text/css">
+    #modalDescargaExcelDeudasPend .chosen-container {
+        width: 50% !important;
+    }
+</style>
+<div id="modalDescargaExcelDeudasPend" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" style="color:black!important">Descargar Excel deudas pendientes</h4>
+            </div>
+            <div class="modal-body">
+                <div class="input-group" style="margin-top:20px;">
+                    <span class="input-group-addon">
+                        <span aria-hidden="true">Deudas al</span>
+                    </span>
+                    <select id="MesDeudaActualizada" name="MesDeudaActualizada" class="form-control" required>
+                        <option value="">Mes</option>
+                        <option value="1">Enero</option>
+                        <option value="2">Febrero</option>
+                        <option value="3">Marzo</option>
+                        <option value="4">Abril</option>
+                        <option value="5">Mayo</option>
+                        <option value="6">Junio</option>
+                        <option value="7">Julio</option>
+                        <option value="8">Agosto</option>
+                        <option value="9">Septiembre</option>
+                        <option value="10">Octubre</option>
+                        <option value="11">Noviembre</option>
+                        <option value="12">Diciembre</option>
+                    </select>
+                    <select id="AnioDeudaActualizada" name="AnioDeudaActualizada" class="form-control" required>
+                        <option value="">Año</option>
+                        @for (int i = 2018; i <= DateTime.Now.Year; i++)
+                        {
+                            <option value="@i">@i</option>
+                        }
+                    </select>
+                </div>
+                <span id="ErrorFormPeriodoDeudaAct" style="color:red;display:none;">Los campos Mes y Año son obligatorios.</span>
+                <br/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float:left;">Cancelar</button>
+                <button type="button" class="btn btn-success" id="btnDescargarExcel" onclick="DescargarExcelDeudaActualizada()" style="float:right;">Descargar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    function DescargarExcelDeudaActualizada() {
+        var mes = parseInt($("#MesDeudaActualizada").val());
+        var anio = parseInt($("#AnioDeudaActualizada").val());
+
+        if (isNaN(mes) || isNaN(anio)) {
+            $("#ErrorFormPeriodoDeudaAct").show();
+            return;
+        } else {
+            $("#ErrorFormPeriodoDeudaAct").hide();
+        }
+        location.href = "/monitoreotest/auditorias/DownloadExcelDeudas?mes=" + mes + "&anio=" + anio;
+    }
+</script>

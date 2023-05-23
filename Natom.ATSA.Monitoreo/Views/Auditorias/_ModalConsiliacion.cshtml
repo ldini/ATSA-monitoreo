@@ -1,0 +1,290 @@
+﻿@model Natom.ATSA.Monitoreo.Models.Factura
+@Html.Hidden("BtnAuditarId")
+@Html.HiddenFor(m => m.FacturaId)
+<style type="text/css">
+    .btn-success.no-selected {
+        background-color: #daffd4;
+        border-color: #59ad55;
+        color: #33a432;
+    }
+
+    .btn-danger.no-selected {
+        background-color: #ffd4d4;
+        border-color: #dc6969;
+        color: #e04444;
+    }
+</style>
+
+<div id="modalConsiliacion" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content" style="min-width:950px;margin-left: -190px;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <div class="row" style="display:inline-block;width:100%;">
+                    <div class="col-xs-3">
+                        <h4 style="color:black!important;margin-top:0px;"><b>Consiliar factura</b></h4>
+                    </div>
+                    <div class="col-xs-9">
+                        <div class="input-group" style="float:right">
+                            <input type="text" style="width:100px;" class="form-control" readonly value="# @Model.CargaId.ToString().PadLeft(8, '0')" />
+                            <input type="text" style="width:50px; text-align:center" class="form-control" readonly value="@Model.Carga.Mes.ToString()" />
+                            <input type="text" style="width:60px; text-align:center" class="form-control" readonly value="@Model.Carga.Anio.ToString()" />
+                            <input type="text" style="width:auto;" class="form-control" readonly value="@Model.Carga.Clinica.Descripcion" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-body" style="padding:0 15px 0 15px;">
+                <div class="row" style="margin-top:10px;">
+                    <div class="col-xs-2">
+                        <div class="form-group">
+                            <label>NOrden</label>
+                            <input type="text" readonly class="form-control" id="NOrden" value="@Model.NOrden" />
+                        </div>
+                    </div>
+                    <div class="col-xs-1">
+                        <div class="form-group">
+                            <label>XX</label>
+                            <input type="text" readonly class="form-control" id="XX" value="@Model.XX" />
+                        </div>
+                    </div>
+                    <div class="col-xs-1">
+                        <div class="form-group">
+                            <label>IT</label>
+                            <input type="text" readonly class="form-control" id="IT" value="@Model.IT" />
+                        </div>
+                    </div>
+                    <div class="col-xs-7">
+                        <div class="form-group">
+                            <label>Afiliado</label>
+                            <div class="input-group" style="width:100%;">
+                                <input type="text" style="width:30%;" id="Afiliado" class="form-control" readonly value="@Model.Afiliado" />
+                                <input type="text" style="width:70%;" id="ApellidoYNombre" class="form-control" readonly value="@Model.ApellidoYNombre" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-1">
+                        <div class="form-group">
+                            <label>Edad</label>
+                            <input type="text" readonly class="form-control" id="Edad" value="@Model.Edad" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-3">
+                        <div class="form-group">
+                            <label>Practica</label>
+                            <input type="text" readonly class="form-control" id="Practica" value="@Model.Practica" />
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="form-group">
+                            <label>Can</label>
+                            <input type="text" readonly class="form-control" id="Can" value="@Model.Can" />
+                        </div>
+                    </div>
+                    <div class="col-xs-7">
+                        <div class="form-group">
+                            <label>Prestaciones</label>
+                            <div class="input-group">
+                                <span class="input-group-addon" style="width:100%; text-align:left;">
+                                    <span aria-hidden="true">@Model.Prestacion</span>
+                                </span>
+                                <select class="form-control" id="PrestacionId" style="width:200px;" disabled>
+                                    <option value="@Model.PrestacionId">@Model.PrestacionObjeto.Codigo - @Model.PrestacionObjeto.Descripcion</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-3">
+                        <label>Honorarios</label>
+                        <input type="text" readonly class="form-control" id="Honor" value="$ @Model.Honor" />
+                    </div>
+                    <div class="col-xs-3">
+                        <label>Gastos</label>
+                        <input type="text" readonly class="form-control" id="Gastos" value="$ @Model.Gastos" />
+                    </div>
+                    <div class="col-xs-3">
+                        <label>Fecha</label>
+                        <input type="text" readonly class="form-control" id="Fecha" value="@(Model.Fecha.HasValue ? Model.Fecha.Value.ToString("dd/MM/yyyy") : "")" />
+                    </div>
+                    <div class="col-xs-3">
+                        <label>Filial</label>
+                        <input type="text" readonly class="form-control" id="Filial" value="@Model.Filial" />
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top:10px;">
+                    <div class="col-xs-3">
+                        <label>Numero</label>
+                        <input type="text" class="form-control" readonly id="AuditoriaNumero" value="@Model.AuditoriaNumero" />
+                    </div>
+                    <div class="col-xs-3">
+                        <label>Ingreso</label>
+                        <input type="text" class="form-control" readonly id="AuditoriaIngreso" value="@Model.AuditoriaIngreso" />
+                    </div>
+                    <div class="col-xs-3">
+                        <label>Egreso</label>
+                        <input type="text" class="form-control" readonly id="AuditoriaEgreso" value="@Model.AuditoriaEgreso" />
+                    </div>
+                    <div class="col-xs-3">
+                        <label>Debito</label>
+                        <input type="text" class="form-control" readonly id="AuditoriaDebito" value="@Model.AuditoriaDebito" />
+                    </div>
+                </div>
+
+                <div class="row" style="padding-bottom:15px;margin-top:20px;">
+                    <div class="col-xs-3">
+                        <div class="form-group" style="display:block">
+                            <label>Auditoria</label>
+                            <input type="text" readonly class="form-control" style="border-color:darkred;color:darkred;font-weight:bold;" value="Rechazada" />
+                        </div>
+                        <div class="form-group" style="display:block">
+                            <label>Monto</label>
+                            <input type="text" class="form-control" readonly id="AuditoriaAuditorMonto" value="$ @Model.AuditoriaAuditorMonto" />
+                        </div>
+                    </div>
+                    <div class="col-xs-9">
+                        <h5><b>Fundamento</b></h5>
+                        <textarea readonly style="height:80px;" class="form-control">@Model.AuditoriaAuditorFundamento</textarea>
+                    </div>
+                </div>
+
+                <hr style="margin:0 0 10px 0;" />
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h4><b>Consiliación</b></h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3">
+                        <div class="form-group">
+                            <label>Prestador oferta</label>
+                            <input type="text" readonly class="form-control" id="ConsiliacionPrestadorOferta" value="$ @Model.ConsiliacionPrestadorOferta" />
+                        </div>
+                    </div>
+                    <div class="col-xs-9">
+                        <div class="form-group">
+                            <label><b>Prestador fundamento</b></label>
+                            <textarea style="height:80px;" readonly id="ConsiliacionPrestadorFundamento" class="form-control">@Model.ConsiliacionPrestadorFundamento</textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top:10px;padding-bottom:15px; ">
+                    <button type="button" class="btn btn-success btn-accion-auditoria no-selected" id="btnCargarConsiliacion" style="float:right;margin-right:20px;">Aceptar</button>
+                    <button type="button" class="btn btn-danger btn-accion-auditoria no-selected" id="btnRechazar" style="float:right;margin-right:20px;">Rechazar</button>
+                </div>
+
+                <div class="row" style="display:none;padding-bottom:15px;margin-top:-15px;" id="divMotivo">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <h5><b>Fundamento rechazo consiliación</b></h5>
+                            <textarea style="height:80px;" id="ConsiliacionAuditorFundamento" class="form-control">@Model.ConsiliacionAuditorFundamento</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" onclick="CerrarModal()" style="float:left;">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="btnContinuarConsiliacion" style="float:right;">Grabar y continuar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $(".btn-accion-auditoria").click(function () {
+            if ($(this).is(".no-selected")) {
+                $(".btn-accion-auditoria:not(.no-selected)").addClass("no-selected");
+                $(this).removeClass("no-selected");
+                if ($(this).is(".btn-danger")) {
+                    $("#divMotivo").slideDown('down');
+                } else {
+                    $("#divMotivo").slideUp('down');
+                }
+            }
+        });
+
+        $("#btnContinuarConsiliacion").click(function () {
+            if (DatosValidos()) {
+                MostrarCargando();
+                $.ajax({
+                    type: "POST",
+                    url: '/monitoreotest/auditorias/GrabarConsiliacion',
+                    data: JSON.stringify({
+                        facturaId: $("#FacturaId").val(),
+                        consiliacionRechaza: !$("#btnRechazar").is(".no-selected"),
+                        consiliacionRechazaFundamento: $("#ConsiliacionAuditorFundamento").val()
+                    }),
+                    dataType: "json",
+                    contentType: "application/json",
+                    success: function (data, status) {
+                        if (status == "success") {
+                            if (data.success) {
+                                CerrarModal();
+                                if (data.facturaSiguienteId == null || data.facturaSiguienteId == 0) {
+                                    location.href = "/monitoreotest/Auditorias";
+                                }
+                                else {
+                                    var fid = data.facturaSiguienteId;
+                                    setTimeout(function () {
+                                        AbrirModal(fid);
+                                    }, 350);
+                                }
+                            }
+                            else {
+                                Mensajes.MostrarError(data.error);
+                                OcultarCargando();
+                            }
+                        }
+                        else {
+                            Mensajes.MostrarError("Se ha producido un error. Comuníquese con el administrador de ATSA.");
+                            OcultarCargando();
+                        }
+                    }
+                });
+            }
+        });
+    });
+
+    function CerrarModal(reloadData) {
+        $("#tblPendientes").DataTable().ajax.reload();
+        $("#tblAuditados").DataTable().ajax.reload();
+
+        $("#modalConsiliacion").modal("hide");
+    }
+
+    function DatosValidos() {
+
+        if ($(".no-selected").length == 2) {
+            Mensajes.MostrarError("Debes seleccionar si Rechazas o Autorizas.");
+            return false;
+        }
+
+        if (!$("#btnRechazar").is(".no-selected")) {
+            if ($("#ConsiliacionAuditorFundamento").val().length < 3) {
+                Mensajes.MostrarError("Debes indicar el fundamento del rechazo.");
+                $("#ConsiliacionAuditorFundamento").focus();
+                return false;
+            }
+        }
+
+        return true;
+    }
+</script>

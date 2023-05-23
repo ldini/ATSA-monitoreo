@@ -1,0 +1,152 @@
+[
+  {
+    "outputFileName": "Resources/css/general.min.css",
+    "inputFiles": [
+      "Resources/css/general.css"
+    ]
+  },
+  {
+    "outputFileName": "Resources/css/home/login.min.css",
+    "inputFiles": [
+      "Resources/css/home/login.css"
+    ]
+  },
+  {
+    "outputFileName": "Resources/js/MotivosFaltaPago/create.min.js",
+    "inputFiles": [
+      "Resources/js/MotivosFaltaPago/create.js"
+    ]
+  },
+  {
+    "outputFileName": "Resources/js/general.min.js",
+    "inputFiles": [
+      "Resources/js/general.js"
+    ]
+  },
+  {
+    "outputFileName": "Resources/js/MotivosFaltaPago/edit.min.js",
+    "inputFiles": [
+      "Resources/js/MotivosFaltaPago/edit.js"
+    ]
+  },
+  {
+    "outputFileName": "Resources/js/MotivosFaltaPago/index.min.js",
+    "inputFiles": [
+      "Resources/js/MotivosFaltaPago/index.js"
+    ]
+  },
+  {
+    "outputFileName": "Resources/js/Establecimientos/index.min.js",
+    "inputFiles": [
+      "Resources/js/Establecimientos/index.js"
+    ]
+  },
+  {
+    "outputFileName": "Resources/js/Establecimientos/create.min.js",
+    "inputFiles": [
+      "Resources/js/Establecimientos/create.js"
+    ]
+  },
+  {
+    "outputFileName": "Resources/js/Establecimientos/edit.min.js",
+    "inputFiles": [
+      "Resources/js/Establecimientos/edit.js"
+    ]
+  },
+  {
+    "outputFileName": "Resources/js/Liquidaciones/index.min.js",
+    "inputFiles": [
+      "Resources/js/Liquidaciones/index.js"
+    ]
+  },
+  {
+    "outputFileName": "Resources/js/Liquidaciones/create.min.js",
+    "inputFiles": [
+      "Resources/js/Liquidaciones/create.js"
+    ]
+  },
+  {
+    "outputFileName": "Resources/js/Liquidaciones/edit.min.js",
+    "inputFiles": [
+      "Resources/js/Liquidaciones/edit.js"
+    ]
+  },
+  {
+    "outputFileName": "Resources/js/Liquidaciones/liquidaciones.min.js",
+    "inputFiles": [
+      "Resources/js/Liquidaciones/liquidaciones.js"
+    ]
+  },
+  {
+    "outputFileName": "Resources/js/Liquidaciones/imprimirReporte.min.js",
+    "inputFiles": [
+      "Resources/js/Liquidaciones/imprimirReporte.js"
+    ]
+  },
+  {
+    "outputFileName": "Resources/js/Rendiciones/index.min.js",
+    "inputFiles": [
+      "Resources/js/Rendiciones/index.js"
+    ]
+  },
+  {
+    "outputFileName": "Resources/js/usuarios/create.min.js",
+    "inputFiles": [
+      "Resources/js/usuarios/create.js"
+    ]
+  },
+  {
+    "outputFileName": "Resources/js/usuarios/edit.min.js",
+    "inputFiles": [
+      "Resources/js/usuarios/edit.js"
+    ]
+  },
+  {
+    "outputFileName": "Resources/js/usuarios/index.min.js",
+    "inputFiles": [
+      "Resources/js/usuarios/index.js"
+    ]
+  },
+  {
+    "outputFileName": "Resources/js/cargas/index.min.js",
+    "inputFiles": [
+      "Resources/js/cargas/index.js"
+    ]
+  },
+  {
+    "outputFileName": "Resources/js/auditorias/index.min.js",
+    "inputFiles": [
+      "Resources/js/auditorias/index.js"
+    ]
+  },
+  {
+    "outputFileName": "Resources/js/auditorias/Crear.min.js",
+    "inputFiles": [
+      "Resources/js/auditorias/Crear.js"
+    ]
+  },
+  {
+    "outputFileName": "Resources/js/auditorias/VerAuditoria.min.js",
+    "inputFiles": [
+      "Resources/js/auditorias/VerAuditoria.js"
+    ]
+  },
+  {
+    "outputFileName": "Resources/js/auditorias/VerConsiliacion.min.js",
+    "inputFiles": [
+      "Resources/js/auditorias/VerConsiliacion.js"
+    ]
+  },
+  {
+    "outputFileName": "Resources/js/comprobanterecibidoperiodo/index.min.js",
+    "inputFiles": [
+      "Resources/js/comprobanterecibidoperiodo/index.js"
+    ]
+  },
+  {
+    "outputFileName": "Resources/js/pagos/index.min.js",
+    "inputFiles": [
+      "Resources/js/pagos/index.js"
+    ]
+  }
+]

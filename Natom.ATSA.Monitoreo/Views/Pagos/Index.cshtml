@@ -1,0 +1,130 @@
+﻿@using Natom.ATSA.Monitoreo.Models
+@{
+    ViewBag.Title = "Pagos";
+}
+
+<style type="text/css">
+    #modalRendicionDetalle .modal-dialog {
+        width: 900px !important;
+    }
+    .filtrosPeriodo .chosen-container {
+        width:50%!important;
+        float:left;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-2">
+        <h2>Pagos</h2>
+    </div>
+    <div class="col-md-2">
+        <div class="form-group">
+            <label class="control-label">Filtrar por Tipo</label>
+            <select size="1" id="filtroTipo" name="filtroTipo" style="width:100%;">
+                <option value="" selected>Todos</option>
+                @foreach (var tipo in ViewBag.Tipos as List<TipoComprobante>)
+                {
+                    <option value="@tipo.TipoComprobanteId">@tipo.Codigo</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label class="control-label">Filtrar por Prestador</label>
+            <select size="1" id="filtroPrestador" name="filtroPrestador" style="width:100%;">
+                <option value="" selected>Todos</option>
+                @foreach (var tipo in ViewBag.Prestadores as List<Prestador>)
+                {
+                    <option value="@tipo.PrestadorId">@tipo.RazonSocial</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="form-group">
+            <label class="control-label">Filtrar por Estado</label>
+            <select size="1" id="filtroEstado" name="filtroEstado" style="width:100%;">
+                <option value="1" selected>Con saldo positivo</option>
+                <option value="2">Con saldo negativo (a favor prestador)</option>
+                <option value="3">Sin saldo</option>
+                <option value="4">Todos</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="form-group">
+            <label class="control-label">Filtrar por Período</label>
+            <div style="width:100%;" class="filtrosPeriodo">
+                <select size="1" id="filtroPeriodoMes" name="filtroPeriodoMes" style="width:50%;float:left;">
+                    <option value="" selected> -- </option>
+                    <option value="1">01</option>
+                    <option value="2">02</option>
+                    <option value="3">03</option>
+                    <option value="4">04</option>
+                    <option value="5">05</option>
+                    <option value="6">06</option>
+                    <option value="7">07</option>
+                    <option value="8">08</option>
+                    <option value="9">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+                <select size="1" id="filtroPeriodoAnio" name="filtroPeriodoAnio" style="width:50%;float:right;">
+                    <option value="" selected> ---- </option>
+                    @for (int y = 2019; y <= DateTime.Now.Year + 1; y++)
+                    {
+                        <option value="@y">@y</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+
+<table width="100%" id="tbl" class="table table-condensed">
+    <thead>
+        <tr>
+            <th>
+                Prestador
+            </th>
+            <th>
+                CUIT
+            </th>
+            <th>
+                Comprobante
+            </th>
+            <th>
+                Fecha
+            </th>
+            <th>
+                Periodo
+            </th>
+            <th>
+                Por
+            </th>
+            <th>
+                Total
+            </th>
+            <th>
+                Saldo
+            </th>
+            <th>
+                @* PAGO 1 *@
+            </th>
+            <th>
+                @* PAGO 2 *@
+            </th>
+            <th>
+                @* PAGO 3 *@
+            </th>
+            <th style="text-align:center">
+                OBS@* PAGO OBSERVACIONES *@
+            </th>
+        </tr>
+    </thead>
+</table>
+
+<script src="~/Resources/js/pagos/index.min.js"></script>

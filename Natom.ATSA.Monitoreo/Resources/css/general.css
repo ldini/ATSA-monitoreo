@@ -1,0 +1,107 @@
+﻿body {
+    background-color: #f7fcff;
+}
+
+.cargando {
+    position:fixed;
+    z-index:99999;
+    background-color:white;
+    width:100%;
+    height:100%;
+    top:0px;
+    left:0px;
+    opacity:0.8;
+    background-image:url(../img/loading.gif);
+    background-repeat:no-repeat;
+    background-size:150px auto;
+    background-position:center;
+}
+
+    .cargando label {
+        font-weight: 100;
+        left: 50%;
+        top: 50%;
+        position: fixed;
+        margin-left: -55px;
+        margin-top: 63px;
+        text-align: center;
+    }
+
+.navbar {
+    border-radius: 0px;
+}
+
+.navbar-default,
+.navbar-default li.dropdown {
+    background-color: #00acec;
+}
+
+    .navbar-default li.active {
+        background-color: white;
+        color: #777 !important;
+        font-weight: bold;
+    }
+
+    .navbar-toggle {
+        position: absolute;
+        float: right;
+        top: 7px;
+        right: 0px;
+    }
+
+.navbar-default .navbar-toggle.collapsed .icon-bar {
+    color: white;
+    background-color: white;
+}
+
+.navbar-default .navbar-toggle:hover > span {
+    color: #777 !important;
+    background-color: white;
+}
+
+.navbar-default h4 {
+    font-size: 14px !important;
+    font-weight: bold !important;
+    margin-left: 10px !important;
+    margin-right: 30px !important;
+    color: white !important;
+    cursor: default;
+}
+        
+        .navbar-default .navbar-brand,
+        .navbar-default .navbar-nav > li > a {
+            color: white;
+        }
+
+        .navbar-default .navbar-brand:hover,
+        .navbar-default .navbar-nav > li > a:hover {
+            color: #fff;
+        }
+
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: white !important;
+    }
+}
+
+.navbar .userData {
+    float: left;
+    height: 40px;
+    margin: -7px 10px -10px 0;
+    max-width: 250px;
+    overflow: hidden;
+}
+
+    .navbar .userData .userName {
+        clear: both;
+        display: table;
+        font-weight:bold;
+    }
+
+    .navbar .userData .bizName {
+        clear: both;
+        display: table;
+        font-size: 12px;
+        font-weight: normal;
+        line-height: 10px;
+    }
