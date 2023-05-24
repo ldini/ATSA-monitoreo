@@ -184,6 +184,23 @@ namespace Natom.ATSA.Monitoreo.Controllers
             });
         }
 
+        //imprimir
+        [HttpPost]
+        public JsonResult ObtenerInfoImprimir(int id)
+        {
+            ComprobanteRecibidoPeriodo periodo = this.manager.ObtenerPeriodo(id);
+            return Json(new
+            {
+                mes = periodo.Mes,
+                anio = periodo.Anio,
+                fecha = periodo.CreaFechaHora,
+
+                //fechaHora = periodo.AnulaFechaHora.Value.ToString("dd/MM/yyyy HH:mm") + "hs",         
+            });
+        }
+
+
+
         [HttpPost]
         public JsonResult ObtenerPrestadores(string prestadores)
         {

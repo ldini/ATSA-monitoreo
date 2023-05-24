@@ -26,7 +26,7 @@
                     var tienePermisoEliminar = row[7];
                     var puedeEditarlo = row[8];
                     var esAdmin = row[9];
-
+                    html += '&nbsp;<a class="btn btn-secondary btn-xs btn-imprimir" id="' + data + '">Imprimir</a>';
                     if (eliminado) {
                         if (esAdmin) {
                             html += '&nbsp;<a class="btn btn-info btn-xs btn-visualizar" id="' + data + '">Visualizar</a>';
@@ -35,6 +35,7 @@
                     }
                     else {
                         html += '&nbsp;<a class="btn btn-info btn-xs btn-visualizar" id="' + data + '">Visualizar</a>';
+                        
                         if (tienePermisoEditar && puedeEditarlo) {
                             html += '&nbsp;<a class="btn btn-primary btn-xs btn-editar" id="' + data + '">Editar</a>';
                         }
@@ -46,6 +47,36 @@
                 }
             }
         ]
+    });
+
+    $("#tbl").on("click", ".btn-imprimir", function (e) {
+        var id = e.currentTarget.id;
+        console.log(id);
+        $.ajax({
+            type: "POST",
+            url: '/monitoreotest/comprobanterecibidoperiodo/ObtenerInfoImprimir',
+            data: JSON.stringify({
+                id: id
+            }),
+            dataType: "json",
+            contentType: "application/json",
+            success: function (data) {
+                var fila = e.parentNode;
+                var ventanaImpresion = window.open('', '_blank');
+                var contenidoHTML = '<html><head><title>Comprobante</title></head><body>';
+                contenidoHTML += '<table><tr><th>Nombre</th><th>Apellido</th><th>Edad</th></tr>';
+                contenidoHTML += '<tr>';
+                contenidoHTML += '<td>' + data.fechaHora + '</td>';
+                contenidoHTML += '</tr>';
+                contenidoHTML += '</table>';
+                contenidoHTML += '</body></html>';
+                ventanaImpresion.document.open();
+                ventanaImpresion.document.write(contenidoHTML);
+                ventanaImpresion.document.close();
+                ventanaImpresion.print();
+                console.log('print');
+            }
+        });
     });
 
     $("#tbl").on("click", ".btn-ver-elimino", function (e) {
@@ -67,6 +98,7 @@
             }
         });
     });
+
     $("#tbl").on("click", ".btn-eliminar", function (e) {
         var id = e.currentTarget.id;
         Mensajes.MostrarSiNo("¿Desea anular el período?\nATENCIÓN: Se anularán también sus facturas cargadas.", function () {
@@ -85,6 +117,8 @@
         var id = e.currentTarget.id;
         location.href = "/monitoreotest/comprobanterecibidoperiodo/Editar?id=" + id + "&sv=a";
     });
+
+   
 
     $("#btnMotivoContinuar").click(function () {
         var id = parseInt($("#EliminarPeriodoId").val());
