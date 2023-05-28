@@ -1,0 +1,125 @@
+﻿@using Natom.ATSA.Monitoreo.Models
+@model ComprobanteRecibidoPeriodo
+
+@{
+    ViewBag.Title = "Imprimir";
+}
+
+@Html.HiddenFor(m => m.ComprobanteRecibidoPeriodoId)
+@Html.Hidden("SoloLectura")
+@Html.Hidden("PuedeAuditar")
+@Html.Hidden("CurrentUser", ((Usuario)ViewBag.Usuario).Nombre)
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+
+<script type="text/javascript">
+
+    var comprobantes = @Html.Raw((new System.Web.Script.Serialization.JavaScriptSerializer()).Serialize(
+                            from c in Model.ComprobantesRecibidos.OrderBy(r => r.Prestador.RazonSocial)
+                            select new object[]
+                            {
+                                c.ComprobanteRecibidoId,
+                                c.FechaRecibido.ToString("dd/MM/yyyy"),
+                                c.Prestador.RazonSocial,
+                                c.Prestador.CUIT,
+                                c.PrestadorId,
+                                c.TipoComprobanteId,
+                                c.PuntoDeVenta,
+                                c.Numero,
+                                c.Fecha.ToString("dd/MM/yyyy"),
+                                c.NInterno,
+                                c.MesPeriodo,
+                                c.AnioPeriodo,
+                                c.Refact,
+                                c.Monto,
+                                c.Debito,
+                                c.APagar,
+                                c.TipoSoporteMag,
+                                c.Ambul,
+                                c.Int,
+                                c.MontoInt,
+                                c.Tipo,
+                                c.Observaciones,
+                                c.Consiliado,
+                                c.Liquidado,
+                                c.LiquidadoPor,
+                                c.Babich,
+                                c.GT,
+                                c.MT,
+                                c.FechaInformada.HasValue ? c.FechaInformada.Value.ToString("dd/MM/yyyy") : "",
+                                c.Pago1.HasValue || c.Pago2.HasValue || c.Pago3.HasValue,
+                                c.Auditado,
+                                c.InformadoEnPMIF
+                            }
+                       ));
+
+
+        var doc = new jsPDF();
+
+
+        doc.setProperties({
+            title: "",
+            author: "",
+            subject: "",
+        });
+
+        var x = 15;
+        var y = 5;
+
+        doc.setFontSize(11);
+        doc.text("Periodo", x, y);
+
+
+        y += 10;
+
+
+        comprobantes.forEach(function(c) {
+
+            doc.setFontSize(10);
+            //doc.text("ComprobanteRecibidoId: " + c[0], x, y);
+            doc.text("Recibido: " + c[1] + "Prestador: " + c[2], x, y + 5);
+            doc.text("Prestador: " + c[2], x, y + 10);
+            doc.text("CUIT: " + c[3], x, y + 15);
+            doc.text("PrestadorId: " + c[4], x, y + 20);
+            doc.text("TipoComprobanteId: " + c[5], x, y + 25);
+            doc.text("PuntoDeVenta: " + c[6], x, y + 30);
+            doc.text("Numero: " + c[7], x, y + 35);
+            doc.text("Fecha: " + c[8], x, y + 40);
+            doc.text("NInterno: " + c[9], x, y + 45);
+            doc.text("MesPeriodo: " + c[10], x, y + 50);
+            doc.text("AnioPeriodo: " + c[11], x, y + 55);
+            doc.text("Refact: " + c[12], x, y + 60);
+            doc.text("Monto: " + c[13], x, y + 65);
+            doc.text("Debito: " + c[14], x, y + 70);
+            doc.text("APagar: " + c[15], x, y + 75);
+            doc.text("TipoSoporteMag: " + c[16], x, y + 80);
+            doc.text("Ambul: " + c[17], x, y + 85);
+            doc.text("Int: " + c[18], x, y + 90);
+            doc.text("MontoInt: " + c[19], x, y + 95);
+            doc.text("Tipo: " + c[20], x, y + 100);
+            doc.text("Observaciones: " + c[21], x, y + 105);
+            doc.text("Consiliado: " + c[22], x, y + 110);
+            doc.text("Liquidado: " + c[23], x, y + 115);
+            doc.text("LiquidadoPor: " + c[24], x, y + 120);
+            doc.text("Babich: " + c[25], x, y + 125);
+            doc.text("GT: " + c[26], x, y + 130);
+            doc.text("MT: " + c[27], x, y + 135);
+            doc.text("FechaInformada: " + c[28], x, y + 140);
+            doc.text("TienePagos: " + c[29], x, y + 145);
+            doc.text("Auditado: " + c[30], x, y + 150);
+            doc.text("InformadoEnPMIF: " + c[31], x, y + 155);
+
+            y += 200;
+
+            if (y >= doc.internal.pageSize.height - 15) {
+                doc.addPage();
+                y = 15;
+            }
+        });
+
+        doc.save("comprobante.pdf");
+        location.href = '/monitoreotest/ComprobanteRecibidoPeriodo';
+    
+</script>
+
+

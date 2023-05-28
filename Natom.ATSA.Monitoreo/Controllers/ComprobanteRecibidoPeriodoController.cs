@@ -184,19 +184,23 @@ namespace Natom.ATSA.Monitoreo.Controllers
             });
         }
 
-        //imprimir
-        [HttpPost]
-        public JsonResult ObtenerInfoImprimir(int id)
+        public ActionResult Imprimir(int id, string sv = null)
         {
-            ComprobanteRecibidoPeriodo periodo = this.manager.ObtenerPeriodo(id);
-            return Json(new
-            {
-                mes = periodo.Mes,
-                anio = periodo.Anio,
-                fecha = periodo.CreaFechaHora,
+            var usuario = new UsuarioManager().ObtenerUsuario(this.SesionUsuarioId.Value);
+            ViewBag.Usuario = usuario;
+            ViewBag.PuedeAnularEnPeriodo = usuario.PuedeAnularEnPeriodo;
+            ViewBag.TiposComprobantes = manager.ObtenerTipoComprobantes();
+            ViewBag.SoloLectura = !string.IsNullOrEmpty(sv);
+            ViewBag.PuedeAuditar = usuario.PuedeAuditarFactura || usuario.UsuarioId == 0;
+            ViewBag.PuedeEditarPMIF = usuario.UsuarioId == 0 && string.IsNullOrEmpty(sv); 
 
-                //fechaHora = periodo.AnulaFechaHora.Value.ToString("dd/MM/yyyy HH:mm") + "hs",         
-            });
+            var comprobantes = manager.ObtenerPeriodoFull(id);
+
+            int diaLimite = Convert.ToInt32(ConfigurationManager.AppSettings["ATSA.Comprobantes.DiaDelMesLimite"]);
+            DateTime fechaLimite = new DateTime(comprobantes.Anio, comprobantes.Mes, diaLimite);
+            ViewBag.MostrarAlertaFecha = DateTime.Now.Date > fechaLimite;
+
+            return View(comprobantes);
         }
 
 

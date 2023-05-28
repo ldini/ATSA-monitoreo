@@ -51,32 +51,7 @@
 
     $("#tbl").on("click", ".btn-imprimir", function (e) {
         var id = e.currentTarget.id;
-        console.log(id);
-        $.ajax({
-            type: "POST",
-            url: '/monitoreotest/comprobanterecibidoperiodo/ObtenerInfoImprimir',
-            data: JSON.stringify({
-                id: id
-            }),
-            dataType: "json",
-            contentType: "application/json",
-            success: function (data) {
-                var fila = e.parentNode;
-                var ventanaImpresion = window.open('', '_blank');
-                var contenidoHTML = '<html><head><title>Comprobante</title></head><body>';
-                contenidoHTML += '<table><tr><th>Nombre</th><th>Apellido</th><th>Edad</th></tr>';
-                contenidoHTML += '<tr>';
-                contenidoHTML += '<td>' + data.fechaHora + '</td>';
-                contenidoHTML += '</tr>';
-                contenidoHTML += '</table>';
-                contenidoHTML += '</body></html>';
-                ventanaImpresion.document.open();
-                ventanaImpresion.document.write(contenidoHTML);
-                ventanaImpresion.document.close();
-                ventanaImpresion.print();
-                console.log('print');
-            }
-        });
+        location.href = "/monitoreotest/comprobanterecibidoperiodo/Imprimir?id=" + id + "&sv=a";      
     });
 
     $("#tbl").on("click", ".btn-ver-elimino", function (e) {

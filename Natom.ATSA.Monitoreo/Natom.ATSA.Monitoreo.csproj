@@ -1468,6 +1468,7 @@
     <Content Include="Views\Pagos\Index.cshtml" />
     <Content Include="Views\Shared\_CargaComprobantesComparacion.cshtml" />
     <Content Include="Views\Cargas\ComparacionComprobantes.cshtml" />
+    <Content Include="Views\ComprobanteRecibidoPeriodo\Imprimir.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Reporting\CuponPagoReport.rdlc" />
