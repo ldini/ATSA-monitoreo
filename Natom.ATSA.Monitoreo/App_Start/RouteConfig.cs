@@ -15,7 +15,7 @@ namespace Natom.ATSA.Monitoreo
 
             routes.MapRoute(
                 name: "Default",
-                url: "monitoreotest/{controller}/{action}/{id}",
+                url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
