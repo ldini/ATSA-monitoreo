@@ -118,7 +118,7 @@
             }
         });
 
-        doc.save("comprobante.pdf");
+        doc.save(`Comprobante-Periodo-@Model.Mes.ToString().PadLeft(2, '0')-@Model.Anio`);
         location.href = '/monitoreotest/ComprobanteRecibidoPeriodo';
 
 </script>
