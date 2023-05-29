@@ -26,7 +26,7 @@
                     var tienePermisoEliminar = row[7];
                     var puedeEditarlo = row[8];
                     var esAdmin = row[9];
-                    html += '&nbsp;<a class="btn btn-secondary btn-xs btn-imprimir" id="' + data + '">Imprimir</a>';
+                            
                     if (eliminado) {
                         if (esAdmin) {
                             html += '&nbsp;<a class="btn btn-info btn-xs btn-visualizar" id="' + data + '">Visualizar</a>';
@@ -43,6 +43,7 @@
                             html += '&nbsp;<a class="btn btn-danger btn-xs btn-eliminar" id="' + data + '">Anular</a>';
                         }
                     }
+                    html += '&nbsp;<a class="btn btn-info btn-xs btn-imprimir" id="' + data + '">Imprimir</a>';
                     return html;
                 }
             }
